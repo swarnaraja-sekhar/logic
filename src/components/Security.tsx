@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion';
 import {
-  Shield,
   CheckCircle2,
-  FileText,
-  Globe,
-  Lock,
-  Key,
-  Activity,
-  Database,
   Terminal,
   ShieldCheck,
   Cpu

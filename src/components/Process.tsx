@@ -80,7 +80,7 @@ const STEPS = [
     title: "AI Parses the Estimate",
     description: "BigLogicAI parses cost list quantities, materials, labor scopes, and milestones without manual typing, replacing hours of manual work.",
     icon: Cpu,
-    illustration: (pulse: boolean) => (
+    illustration: (_pulse: boolean) => (
       <div className="w-full h-[120px] rounded-xl bg-orange-950/20 border border-orange-500/10 flex flex-col justify-between p-3.5 relative overflow-hidden text-left">
         <motion.div 
           animate={{ top: ['0%', '100%', '0%'] }}
@@ -104,7 +104,7 @@ const STEPS = [
     title: "AI Generates Draw Schedules",
     description: "The platform automatically generates draw payment schedules, financial plans, and milestone stages based on estimate metrics.",
     icon: FileCheck,
-    illustration: (pulse: boolean) => (
+    illustration: (_pulse: boolean) => (
       <div className="w-full h-[120px] rounded-xl bg-[#0b0c10] border border-white/5 flex flex-col justify-between p-3 text-left font-mono text-[8px]">
         <span className="text-emerald-400 font-bold tracking-widest uppercase">✓ DRAW SCHEDULE COMPILED</span>
         <div className="space-y-1">
@@ -152,7 +152,7 @@ const STEPS = [
     title: "Material Extraction",
     description: "The AI isolates every material required (flooring, paint, cabinets, fixtures, supplies) and creates organized sheets automatically.",
     icon: ListTodo,
-    illustration: (pulse: boolean) => (
+    illustration: (_pulse: boolean) => (
       <div className="w-full h-[120px] rounded-xl bg-emerald-950/20 border border-emerald-500/10 flex flex-col justify-between p-3 text-left font-mono text-[8px]">
         <div className="flex items-center justify-between text-emerald-400 font-bold">
           <span>MATERIAL SHEET</span>

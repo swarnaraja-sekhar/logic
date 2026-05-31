@@ -6,13 +6,7 @@ import {
   Link2, 
   RotateCcw,
   CheckCircle,
-  Brain,
-  Search,
-  Volume2,
-  Folder,
-  Clock,
-  Sparkles,
-  FileText
+  Volume2
 } from 'lucide-react';
 import { Reveal } from './SectionReveal';
 
