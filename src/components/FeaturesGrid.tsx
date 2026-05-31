@@ -59,7 +59,6 @@ const GlowCardInner = ({
 export const FeaturesGrid = () => {
   const [pulse, setPulse] = useState(true);
   const [estimateProgress, setEstimateProgress] = useState(0);
-  const [activeEstimateStep, setActiveEstimateStep] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -75,14 +74,10 @@ export const FeaturesGrid = () => {
         if (p >= 100) {
           setTimeout(() => {
             setEstimateProgress(0);
-            setActiveEstimateStep(0);
           }, 2000);
           return 100;
         }
-        const next = p + 20;
-        if (next >= 80) setActiveEstimateStep(2);
-        else if (next >= 40) setActiveEstimateStep(1);
-        return next;
+        return p + 20;
       });
     }, 1000);
     return () => clearInterval(interval);

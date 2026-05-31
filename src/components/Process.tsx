@@ -39,7 +39,7 @@ const STEPS = [
     title: "Project is Created in BigLogicAI",
     description: "The company creates a new reconstruction job. BigLogicAI centralizes homeowner details, insurance info, estimates, photos, and crew assignments.",
     icon: Database,
-    illustration: (pulse: boolean) => (
+    illustration: (_pulse: boolean) => (
       <div className="w-full h-[120px] rounded-xl bg-blue-950/20 border border-blue-500/10 flex flex-col justify-between p-3.5 relative overflow-hidden text-left">
         <div className="flex items-center gap-2 select-none">
           <Database className="w-4 h-4 text-blue-400" />
