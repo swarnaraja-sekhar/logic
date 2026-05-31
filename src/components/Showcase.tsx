@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { 
-  Zap, 
-  Folder, 
-  Brain, 
-  ArrowRight, 
-  Check, 
-  FileText, 
-  Sparkles, 
-  Clock, 
-  Search, 
+import {
+  Zap,
+  Folder,
+  Brain,
+  ArrowRight,
+  Check,
+  FileText,
+  Sparkles,
+  Clock,
+  Search,
   Volume2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -57,7 +57,7 @@ const DocIntelligenceMockup = () => {
   return (
     <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative">
       <div className="absolute inset-0 bg-gradient-to-b from-orange-500/[0.01] to-transparent pointer-events-none" />
-      
+
       {/* Top Bar */}
       <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4 select-none shrink-0">
         <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ const DocIntelligenceMockup = () => {
       <div className="flex-1 flex flex-col justify-between">
         <AnimatePresence mode="wait">
           {step === 0 && (
-            <motion.div 
+            <motion.div
               key="step0"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ const DocIntelligenceMockup = () => {
           )}
 
           {step === 1 && (
-            <motion.div 
+            <motion.div
               key="step1"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -94,36 +94,138 @@ const DocIntelligenceMockup = () => {
               className="flex-1 flex flex-col justify-center"
             >
               <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4 relative overflow-hidden">
-                {/* Laser scan line */}
-                <motion.div 
-                  animate={{ top: ['0%', '100%', '0%'] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF3B00] to-transparent shadow-[0_0_10px_rgba(255,59,0,0.5)] z-20 pointer-events-none"
-                />
-                
-                <div className="flex items-center justify-between mb-3 text-xs text-white">
+                <div className="flex items-center justify-between mb-2 text-xs text-white">
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[#FF3B00]" />
-                    <span className="font-medium truncate max-w-[200px]">Xactimate_Estimate_452Maple.pdf</span>
+                    <FileText className="w-3.5 h-3.5 text-[#FF3B00]" />
+                    <span className="font-semibold text-[11px] truncate max-w-[185px]">Xactimate_Estimate_452Maple.pdf</span>
                   </div>
-                  <span className="font-mono text-[10px] text-gray-400">{progress}%</span>
+                  <span className="font-mono text-[9px] text-gray-400">{progress}%</span>
                 </div>
 
-                <div className="w-full bg-neutral-900 h-1.5 rounded-full overflow-hidden mb-4">
+                <div className="w-full bg-neutral-900 h-1 rounded-full overflow-hidden mb-3.5">
                   <div className="h-full bg-[#FF3B00] rounded-full transition-all duration-100" style={{ width: `${progress}%` }} />
                 </div>
 
-                <div className="space-y-1.5 font-mono text-[9px] text-gray-500 text-left">
-                  <div className={progress >= 20 ? "text-orange-400" : ""}>▶ Reading document structures...</div>
-                  <div className={progress >= 50 ? "text-orange-400" : ""}>▶ Parsing line items & quantities...</div>
-                  <div className={progress >= 80 ? "text-orange-400" : ""}>▶ Auditing Carrier SLA guidelines...</div>
+                {/* Diagrammatic Dynamic Parsing Block */}
+                <div className="flex-1 flex flex-row items-center justify-between gap-4 relative overflow-hidden h-[155px] border border-white/5 bg-white/[0.01] rounded-xl p-3 select-none">
+
+                  {/* Left Column: Unstructured Document representation */}
+                  <div className="w-[42%] bg-neutral-950/80 border border-white/5 rounded-lg p-2.5 relative overflow-hidden flex flex-col gap-2 h-[135px] z-10">
+                    <div className="absolute inset-x-0 top-0 bg-neutral-900 border-b border-white/5 px-2 py-0.5 text-[6px] font-mono text-gray-500 uppercase tracking-widest text-left">unstructured.pdf</div>
+
+                    <div className="flex flex-col gap-1.5 mt-3.5 text-left">
+                      <div className="w-[85%] h-1 bg-white/10 rounded" />
+                      <div className="w-[50%] h-1 bg-white/10 rounded" />
+
+                      {/* Target field 1: Price */}
+                      <div className={`w-[95%] h-3.5 rounded flex items-center justify-between px-1.5 transition-colors duration-300 ${progress >= 30 ? 'bg-[#FF3B00]/15 border border-[#FF3B00]/30' : 'bg-white/5 border border-transparent'}`}>
+                        <span className="text-[5.5px] font-mono text-gray-400">Total:</span>
+                        <span className={`text-[5.5px] font-mono font-bold ${progress >= 30 ? 'text-[#FF3B00]' : 'text-gray-500'}`}>$28,450.00</span>
+                      </div>
+
+                      <div className="w-[40%] h-1 bg-white/10 rounded" />
+
+                      {/* Target field 2: SLA rules */}
+                      <div className={`w-[95%] h-3.5 rounded flex items-center justify-between px-1.5 transition-colors duration-300 ${progress >= 60 ? 'bg-emerald-500/15 border border-emerald-500/30' : 'bg-white/5 border border-transparent'}`}>
+                        <span className="text-[5.5px] font-mono text-gray-400">Rules:</span>
+                        <span className={`text-[5.5px] font-mono font-bold ${progress >= 60 ? 'text-emerald-400' : 'text-gray-500'}`}>SLA Pass</span>
+                      </div>
+
+                      <div className="w-[75%] h-1 bg-white/10 rounded" />
+                    </div>
+
+                    {/* Y-animated horizontal scan laser line */}
+                    <motion.div
+                      animate={{ y: [0, 110, 0] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                      className="absolute left-0 right-0 h-[1.5px] bg-[#FF3B00] shadow-[0_0_6px_#FF3B00] z-20 pointer-events-none"
+                      style={{ top: '15px' }}
+                    />
+                  </div>
+
+                  {/* Middle Column: SVG connector lines */}
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
+                      {/* Path 1: From left target field 1 to right database field 1 */}
+                      <path
+                        d="M 125 52 C 150 52, 150 48, 175 48"
+                        fill="none"
+                        stroke={progress >= 30 ? "#FF3B00" : "#1f1f2e"}
+                        strokeWidth="1.2"
+                        className="transition-colors duration-500"
+                      />
+                      {progress >= 30 && progress < 70 && (
+                        <motion.circle
+                          r="1.5"
+                          fill="#FF3B00"
+                          animate={{
+                            cx: [125, 140, 160, 175],
+                            cy: [52, 52, 48, 48]
+                          }}
+                          transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+                        />
+                      )}
+
+                      {/* Path 2: From left target field 2 to right database field 2 */}
+                      <path
+                        d="M 125 96 C 150 96, 150 80, 175 80"
+                        fill="none"
+                        stroke={progress >= 60 ? "#10b981" : "#1f1f2e"}
+                        strokeWidth="1.2"
+                        className="transition-colors duration-500"
+                      />
+                      {progress >= 60 && progress < 90 && (
+                        <motion.circle
+                          r="1.5"
+                          fill="#10b981"
+                          animate={{
+                            cx: [125, 140, 160, 175],
+                            cy: [96, 96, 80, 80]
+                          }}
+                          transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+                        />
+                      )}
+                    </svg>
+                  </div>
+
+                  {/* Right Column: Structured JSON database schema */}
+                  <div className="w-[45%] bg-[#0a0a0f] border border-white/5 rounded-lg p-2.5 flex flex-col gap-2 h-[135px] z-10 justify-between text-left font-mono text-[7.5px] select-text">
+                    <div className="text-[6px] font-mono text-gray-500 uppercase tracking-widest border-b border-white/5 pb-1">structured_output.json</div>
+
+                    <div className="flex-1 flex flex-col justify-center gap-1.5">
+                      <div>
+                        <span className="text-[#FF3B00]">"value":</span>
+                        <span className={`ml-1 transition-colors duration-300 ${progress >= 30 ? 'text-white font-bold' : 'text-gray-600'}`}>
+                          {progress >= 30 ? '"$28,450.00"' : 'null'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-blue-400">"status":</span>
+                        <span className={`ml-1 transition-colors duration-300 ${progress >= 60 ? 'text-emerald-400 font-bold' : 'text-gray-600'}`}>
+                          {progress >= 60 ? '"compliant"' : 'null'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-purple-400">"rules":</span>
+                        <span className={`ml-1 transition-colors duration-300 ${progress >= 90 ? 'text-purple-400 font-bold' : 'text-gray-600'}`}>
+                          {progress >= 90 ? '["dehumidifier_cap"]' : 'null'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="text-[6px] text-gray-500 border-t border-white/5 pt-1 flex justify-between select-none">
+                      <span>Index: 47</span>
+                      <span className="text-emerald-400 font-bold">✓ Parsed</span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </motion.div>
           )}
 
           {step === 2 && (
-            <motion.div 
+            <motion.div
               key="step2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -188,7 +290,7 @@ const WorkflowAutomationMockup = () => {
   return (
     <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-500/[0.01] to-transparent pointer-events-none" />
-      
+
       {/* Top Bar */}
       <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4 select-none shrink-0">
         <div className="flex items-center gap-2">
@@ -209,19 +311,17 @@ const WorkflowAutomationMockup = () => {
             <div key={index} className="flex items-center gap-3 relative">
               {/* Connector line */}
               {index < nodes.length - 1 && (
-                <div className={`absolute left-5 top-10 w-[1px] h-6 -z-10 ${
-                  isPassed ? 'bg-blue-500' : 'bg-neutral-800'
-                } transition-colors duration-500`} />
+                <div className={`absolute left-5 top-10 w-[1px] h-6 -z-10 ${isPassed ? 'bg-blue-500' : 'bg-neutral-800'
+                  } transition-colors duration-500`} />
               )}
 
               {/* Node Circle */}
-              <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-500 ${
-                isActive 
-                  ? 'border-blue-500 bg-blue-500/10 text-blue-400 scale-105 shadow-[0_0_15px_rgba(59,130,246,0.2)]' 
-                  : isPassed
-                    ? 'border-emerald-500/40 bg-emerald-500/5 text-emerald-400'
-                    : 'border-white/5 bg-neutral-950 text-gray-600'
-              }`}>
+              <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-500 ${isActive
+                ? 'border-blue-500 bg-blue-500/10 text-blue-400 scale-105 shadow-[0_0_15px_rgba(59,130,246,0.2)]'
+                : isPassed
+                  ? 'border-emerald-500/40 bg-emerald-500/5 text-emerald-400'
+                  : 'border-white/5 bg-neutral-950 text-gray-600'
+                }`}>
                 {isPassed ? <Check className="w-4.5 h-4.5 text-emerald-400" /> : <Icon className="w-4.5 h-4.5" />}
               </div>
 
@@ -264,7 +364,7 @@ const JobManagementMockup = () => {
   return (
     <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.01] to-transparent pointer-events-none" />
-      
+
       {/* Top Bar */}
       <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4 select-none shrink-0">
         <div className="flex items-center gap-2">
@@ -276,7 +376,7 @@ const JobManagementMockup = () => {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col gap-3">
-        
+
         {/* Real-time P&L Panel */}
         <div className="bg-white/[0.01] border border-white/5 rounded-xl p-3 text-left">
           <div className="text-[8px] font-mono text-gray-500 uppercase mb-2 tracking-wider flex items-center justify-between">
@@ -302,7 +402,7 @@ const JobManagementMockup = () => {
         {/* Milestone tracking progress */}
         <div className="bg-white/[0.01] border border-white/5 rounded-xl p-3 text-left">
           <div className="text-[8px] font-mono text-gray-500 uppercase mb-2 tracking-wider">MILESTONE PROGRESS</div>
-          
+
           <div className="space-y-2">
             {[
               { name: "Mitigation & Dryout", status: "Completed", progress: 100, color: "bg-emerald-500" },
@@ -346,7 +446,7 @@ const CompanyBrainMockup = () => {
   return (
     <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-500/[0.01] to-transparent pointer-events-none" />
-      
+
       {/* Top Bar */}
       <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4 select-none shrink-0">
         <div className="flex items-center gap-2">
@@ -391,12 +491,12 @@ const CompanyBrainMockup = () => {
           {/* Wave bars */}
           <div className="flex items-center gap-0.5 h-3.5">
             {[1.2, 2.5, 1.8, 2.8, 1.5, 2.2, 1.0].map((h, i) => (
-              <span 
-                key={i} 
+              <span
+                key={i}
                 className="w-[1.5px] bg-purple-400 rounded-full transition-all duration-300"
-                style={{ 
+                style={{
                   height: pulse ? `${h * 4}px` : `${h * 1.5}px`
-                }} 
+                }}
               />
             ))}
           </div>
@@ -499,190 +599,184 @@ const Showcase = () => {
 
   return (
     <section id="showcase" className="relative z-10 w-full border-t border-white/5 bg-[#050505] pt-24 pb-32">
-      
+
       {/* Dynamic backdrop glows */}
       <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-purple-900/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
       {/* Header section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
         className="mb-16 max-w-[1600px] mx-auto px-4 sm:px-6"
       >
-         <div className="text-[#FF3B00] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-           BIGLOGICAI CAPABILITIES
-         </div>
-         <h2 className="text-4xl md:text-6xl font-medium tracking-tight leading-tight text-white mb-6 max-w-5xl">
-           Scale without limits. <br />Build without chaos.
-         </h2>
+        <div className="text-[#FF3B00] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+          BIGLOGICAI CAPABILITIES
+        </div>
+        <h2 className="text-4xl md:text-6xl font-medium tracking-tight leading-tight text-white mb-6 max-w-5xl">
+          Scale without limits. <br />Build without chaos.
+        </h2>
       </motion.div>
- 
+
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 flex flex-col lg:flex-row gap-12 lg:gap-24 relative items-start">
-        
-          {/* Left Side: Sticky Tabs Card */}
-          <motion.div 
-            variants={tabsListVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false }}
-            className="w-full lg:w-[360px] rounded-3xl border border-[#FF3B00]/10 bg-gradient-to-br from-[#120805]/90 via-[#0a0706]/95 to-black p-2.5 lg:sticky lg:top-32 relative z-10 flex flex-col shadow-2xl overflow-hidden shadow-[0_0_40px_rgba(255,59,0,0.04)]"
-          >
-            {/* Subtle internal gradient glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,59,0,0.03)_0%,transparent_60%)] pointer-events-none z-0" />
 
-             {TABS.map((tab) => {
-               const isActive = activeTab === tab.id;
-               const Icon = tab.icon;
-               return (
-                 <motion.button
-                   key={tab.id}
-                   variants={tabItemVariants}
-                   onClick={() => {
-                     setActiveTab(tab.id);
-                     const el = document.getElementById(`content-${tab.id}`);
-                     if (el) {
-                       const y = el.getBoundingClientRect().top + window.scrollY - 150;
-                       window.scrollTo({ top: y, behavior: 'smooth' });
-                     }
-                   }}
-                   whileHover={{ x: 4 }}
-                   whileTap={{ scale: 0.98 }}
-                   className={`group flex items-center gap-4 px-5 py-5 text-left rounded-2xl hover:bg-white/[0.01] transition-all relative overflow-hidden mb-1 last:mb-0`}
-                 >
-                    {/* Active highlight pill */}
-                    {isActive && (
-                      <motion.div 
-                        layoutId="activeShowcaseTabHighlight"
-                        className={`absolute inset-0 bg-white/[0.02] border-l-2 rounded-2xl z-0 ${
-                          tab.id === 'doc-intelligence' ? 'border-[#FF3B00]' :
-                          tab.id === 'workflow-automation' ? 'border-blue-500' :
-                          tab.id === 'job-management' ? 'border-emerald-500' :
-                          'border-purple-500'
-                        }`}
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
+        {/* Left Side: Sticky Tabs Card */}
+        <motion.div
+          variants={tabsListVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          className="w-full lg:w-[360px] rounded-3xl border border-[#FF3B00]/10 bg-gradient-to-br from-[#120805]/90 via-[#0a0706]/95 to-black p-2.5 lg:sticky lg:top-32 relative z-10 flex flex-col shadow-2xl overflow-hidden shadow-[0_0_40px_rgba(255,59,0,0.04)]"
+        >
+          {/* Subtle internal gradient glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,59,0,0.03)_0%,transparent_60%)] pointer-events-none z-0" />
 
-                    <div className={`p-2.5 rounded-xl relative z-10 ${isActive ? (
-                      tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00] shadow-[0_0_15px_rgba(255,59,0,0.15)]' :
-                      tab.id === 'workflow-automation' ? 'bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]' :
-                      tab.id === 'job-management' ? 'bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]' :
-                      'bg-purple-500/10 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)]'
-                    ) : 'bg-white/5 text-gray-500 group-hover:text-gray-300 group-hover:bg-white/10'} transition-all duration-300`}>
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <span className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase transition-colors relative z-10 ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
-                      {tab.label}
-                    </span>
-                 </motion.button>
-               );
-             })}
-          </motion.div>
-
-          {/* Right Side: Flowing Stacked Content */}
-          <div className="flex-1 relative flex flex-col gap-12 w-full">
-            {TABS.map((tab) => (
-              <div
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab.id;
+            const Icon = tab.icon;
+            return (
+              <motion.button
                 key={tab.id}
-                id={`content-${tab.id}`}
-                className="w-full flex flex-col"
+                variants={tabItemVariants}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  const el = document.getElementById(`content-${tab.id}`);
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY - 150;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.98 }}
+                className={`group flex items-center gap-4 px-5 py-5 text-left rounded-2xl hover:bg-white/[0.01] transition-all relative overflow-hidden mb-1 last:mb-0`}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, margin: "-120px" }}
-                  onViewportEnter={() => setActiveTab(tab.id)}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-                  className={`w-full rounded-3xl border p-6 sm:p-10 relative overflow-hidden group/card shadow-2xl transition-all duration-500 ${
-                    tab.id === 'doc-intelligence' ? 'border-[#FF3B00]/10 hover:border-[#FF3B00]/30 bg-gradient-to-br from-[#160804]/90 via-[#0a0604]/95 to-black shadow-[0_0_50px_rgba(255,59,0,0.02)] hover:shadow-[0_0_50px_rgba(255,59,0,0.06)]' :
-                    tab.id === 'workflow-automation' ? 'border-blue-500/10 hover:border-blue-500/30 bg-gradient-to-br from-[#040916]/90 via-[#02050b]/95 to-black shadow-[0_0_50px_rgba(59,130,246,0.02)] hover:shadow-[0_0_50px_rgba(59,130,246,0.06)]' :
+                {/* Active highlight pill */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeShowcaseTabHighlight"
+                    className={`absolute inset-0 bg-white/[0.02] border-l-2 rounded-2xl z-0 ${tab.id === 'doc-intelligence' ? 'border-[#FF3B00]' :
+                      tab.id === 'workflow-automation' ? 'border-blue-500' :
+                        tab.id === 'job-management' ? 'border-emerald-500' :
+                          'border-purple-500'
+                      }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+
+                <div className={`p-2.5 rounded-xl relative z-10 ${isActive ? (
+                  tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00] shadow-[0_0_15px_rgba(255,59,0,0.15)]' :
+                    tab.id === 'workflow-automation' ? 'bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]' :
+                      tab.id === 'job-management' ? 'bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]' :
+                        'bg-purple-500/10 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)]'
+                ) : 'bg-white/5 text-gray-500 group-hover:text-gray-300 group-hover:bg-white/10'} transition-all duration-300`}>
+                  <Icon className="w-4 h-4" />
+                </div>
+                <span className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase transition-colors relative z-10 ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                  {tab.label}
+                </span>
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
+        {/* Right Side: Flowing Stacked Content */}
+        <div className="flex-1 relative flex flex-col gap-12 w-full">
+          {TABS.map((tab) => (
+            <div
+              key={tab.id}
+              id={`content-${tab.id}`}
+              className="w-full flex flex-col"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-120px" }}
+                onViewportEnter={() => setActiveTab(tab.id)}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+                className={`w-full rounded-3xl border p-6 sm:p-10 relative overflow-hidden group/card shadow-2xl transition-all duration-500 ${tab.id === 'doc-intelligence' ? 'border-[#FF3B00]/10 hover:border-[#FF3B00]/30 bg-gradient-to-br from-[#160804]/90 via-[#0a0604]/95 to-black shadow-[0_0_50px_rgba(255,59,0,0.02)] hover:shadow-[0_0_50px_rgba(255,59,0,0.06)]' :
+                  tab.id === 'workflow-automation' ? 'border-blue-500/10 hover:border-blue-500/30 bg-gradient-to-br from-[#040916]/90 via-[#02050b]/95 to-black shadow-[0_0_50px_rgba(59,130,246,0.02)] hover:shadow-[0_0_50px_rgba(59,130,246,0.06)]' :
                     tab.id === 'job-management' ? 'border-emerald-500/10 hover:border-emerald-500/30 bg-gradient-to-br from-[#041609]/90 via-[#020b04]/95 to-black shadow-[0_0_50px_rgba(16,185,129,0.02)] hover:shadow-[0_0_50px_rgba(16,185,129,0.06)]' :
-                    'border-purple-500/10 hover:border-purple-500/30 bg-gradient-to-br from-[#090416]/90 via-[#04020b]/95 to-black shadow-[0_0_50px_rgba(168,85,247,0.02)] hover:shadow-[0_0_50px_rgba(168,85,247,0.06)]'
+                      'border-purple-500/10 hover:border-purple-500/30 bg-gradient-to-br from-[#090416]/90 via-[#04020b]/95 to-black shadow-[0_0_50px_rgba(168,85,247,0.02)] hover:shadow-[0_0_50px_rgba(168,85,247,0.06)]'
                   }`}
-                >
-                  {/* Subtle top-left internal theme glow */}
-                  <div className={`absolute -left-20 -top-20 w-[200px] h-[200px] rounded-full blur-[80px] pointer-events-none opacity-20 transition-all duration-700 ${
-                    tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]' :
-                    tab.id === 'workflow-automation' ? 'bg-blue-500' :
+              >
+                {/* Subtle top-left internal theme glow */}
+                <div className={`absolute -left-20 -top-20 w-[200px] h-[200px] rounded-full blur-[80px] pointer-events-none opacity-20 transition-all duration-700 ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]' :
+                  tab.id === 'workflow-automation' ? 'bg-blue-500' :
                     tab.id === 'job-management' ? 'bg-emerald-500' :
-                    'bg-purple-500'
+                      'bg-purple-500'
                   }`} />
 
-                  {/* Subtle dynamic backdrop glow matching the theme */}
-                  <div className={`absolute -right-20 -bottom-20 w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-25 group-hover/card:opacity-45 transition-all duration-700 group-hover/card:scale-125 ${
-                    tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]' :
-                    tab.id === 'workflow-automation' ? 'bg-blue-500' :
+                {/* Subtle dynamic backdrop glow matching the theme */}
+                <div className={`absolute -right-20 -bottom-20 w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-25 group-hover/card:opacity-45 transition-all duration-700 group-hover/card:scale-125 ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]' :
+                  tab.id === 'workflow-automation' ? 'bg-blue-500' :
                     tab.id === 'job-management' ? 'bg-emerald-500' :
-                    'bg-purple-500'
+                      'bg-purple-500'
                   }`} />
-                  
-                  {/* Subtle internal grid decoration */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808003_1px,transparent_1px),linear-gradient(to_bottom,#80808003_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none z-0" />
 
-                  {/* Content Header area */}
-                  <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-10 w-full relative z-10 text-left">
-                    <div className="max-w-xl">
-                      <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
-                          <tab.icon className={`w-4 h-4 ${
-                            tab.id === 'doc-intelligence' ? 'text-[#FF3B00]' :
-                            tab.id === 'workflow-automation' ? 'text-blue-400' :
-                            tab.id === 'job-management' ? 'text-emerald-400' :
+                {/* Subtle internal grid decoration */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808003_1px,transparent_1px),linear-gradient(to_bottom,#80808003_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none z-0" />
+
+                {/* Content Header area */}
+                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-10 w-full relative z-10 text-left">
+                  <div className="max-w-xl">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
+                      <tab.icon className={`w-4 h-4 ${tab.id === 'doc-intelligence' ? 'text-[#FF3B00]' :
+                        tab.id === 'workflow-automation' ? 'text-blue-400' :
+                          tab.id === 'job-management' ? 'text-emerald-400' :
                             'text-purple-400'
-                          }`} />
-                          {tab.label}
-                      </div>
-                      <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-4 text-white">
-                        {tab.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        {tab.description}
-                      </p>
-
-                      {/* Extracted Features List */}
-                      {tab.features && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-6">
-                          {tab.features.map((feat, index) => (
-                            <div key={index} className="flex items-center gap-2 text-xs text-gray-400">
-                              <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
-                                tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00]' :
-                                tab.id === 'workflow-automation' ? 'bg-blue-500/10 text-blue-400' :
-                                tab.id === 'job-management' ? 'bg-emerald-500/10 text-emerald-400' :
-                                'bg-purple-500/10 text-purple-400'
-                              }`}>
-                                <Check className="w-2.5 h-2.5" strokeWidth={3} />
-                              </div>
-                              <span>{feat}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                        }`} />
+                      {tab.label}
                     </div>
-                    <motion.button 
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="whitespace-nowrap px-6 py-3 rounded bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold flex items-center gap-2 shrink-0 z-20 relative shadow-lg cursor-pointer"
-                    >
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </motion.button>
-                  </div>
+                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-4 text-white">
+                      {tab.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {tab.description}
+                    </p>
 
-                  {/* Mockup area - Premium dynamic liftoff hovers */}
-                  <motion.div 
-                    whileHover={{ y: -6, scale: 1.005 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    className="w-full mt-4 cursor-pointer relative group rounded-xl overflow-hidden z-10"
+                    {/* Extracted Features List */}
+                    {tab.features && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-6">
+                        {tab.features.map((feat, index) => (
+                          <div key={index} className="flex items-center gap-2 text-xs text-gray-400">
+                            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00]' :
+                              tab.id === 'workflow-automation' ? 'bg-blue-500/10 text-blue-400' :
+                                tab.id === 'job-management' ? 'bg-emerald-500/10 text-emerald-400' :
+                                  'bg-purple-500/10 text-purple-400'
+                              }`}>
+                              <Check className="w-2.5 h-2.5" strokeWidth={3} />
+                            </div>
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="whitespace-nowrap px-6 py-3 rounded bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold flex items-center gap-2 shrink-0 z-20 relative shadow-lg cursor-pointer"
                   >
-                    {/* Laser sweep shine effect */}
-                    <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1000ms] ease-out pointer-events-none z-30" />
-                    {tab.mockup}
-                  </motion.div>
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </motion.button>
+                </div>
+
+                {/* Mockup area - Premium dynamic liftoff hovers */}
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.005 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="w-full mt-4 cursor-pointer relative group rounded-xl overflow-hidden z-10"
+                >
+                  {/* Laser sweep shine effect */}
+                  <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1000ms] ease-out pointer-events-none z-30" />
+                  {tab.mockup}
                 </motion.div>
-              </div>
-            ))}
-          </div>
-        
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

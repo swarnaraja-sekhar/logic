@@ -97,7 +97,7 @@ const WhyUs = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <div className="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-6">
-              <Counter value={300} /><span className="text-[#FF3B00]">+</span>
+              <Counter value={30} /><span className="text-[#FF3B00]">+</span>
             </div>
             <p className="text-gray-400 text-sm md:text-base pr-4">
               Successful projects<br/>completed
