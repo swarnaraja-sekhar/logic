@@ -1,21 +1,13 @@
 import { useState, useEffect } from 'react';
 import { 
   Search, 
-  Settings2, 
-  Plus, 
   Terminal, 
-  MessageSquare, 
-  Eye, 
-  Paperclip, 
   Check, 
-  X, 
   Folder, 
   ChevronRight, 
   Sparkles,
-  Clock,
   AlertTriangle,
   RefreshCw,
-  FileText,
   Volume2
 } from 'lucide-react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';

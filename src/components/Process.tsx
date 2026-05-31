@@ -8,7 +8,7 @@ import {
   UploadCloud, 
   Cpu, 
   FileCheck, 
-  PenTool, 
+  PenTool,
   ListTodo
 } from 'lucide-react';
 
