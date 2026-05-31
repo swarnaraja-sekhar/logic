@@ -9,7 +9,10 @@ import {
   Sparkles,
   Clock,
   Search,
-  Volume2
+  Volume2,
+  Coins,
+  Package,
+  User
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -55,7 +58,7 @@ const DocIntelligenceMockup = () => {
   }, [step]);
 
   return (
-    <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative">
+    <div className="showcase-inner-mockup rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative">
       <div className="absolute inset-0 bg-gradient-to-b from-orange-500/[0.01] to-transparent pointer-events-none" />
 
       {/* Top Bar */}
@@ -227,34 +230,131 @@ const DocIntelligenceMockup = () => {
           {step === 2 && (
             <motion.div
               key="step2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="flex-1 flex flex-col justify-center gap-3"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="flex-1 flex flex-col justify-center"
             >
-              <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-3 flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                  <Check className="w-4.5 h-4.5" strokeWidth={2.5} />
-                </div>
-                <div className="flex-1 min-w-0 text-left">
-                  <div className="text-[11px] font-bold text-white mb-0.5">Parse completed successfully!</div>
-                  <div className="text-[9px] text-emerald-400 font-mono">47 items extracted · Auto-corrected 1 SLA violation</div>
-                </div>
-              </div>
+              {/* Outer card container with premium orange/purple glowing borders */}
+              <div className="relative rounded-2xl border border-[#FF3B00]/25 bg-[#06060a]/90 p-5 shadow-[0_0_40px_rgba(255,59,0,0.08)] overflow-hidden flex flex-col md:flex-row gap-6 items-center">
+                
+                {/* Subtle internal glowing spots */}
+                <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+                
+                {/* LEFT SIDE: Document Circle Checkmark */}
+                <div className="flex-shrink-0 relative flex items-center justify-center w-32 h-32">
+                  {/* Glowing orange/yellow background blob */}
+                  <div className="absolute inset-2 rounded-full bg-orange-500/[0.04] blur-md" />
+                  
+                  {/* Outer orange track with gap */}
+                  <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                    <circle 
+                      cx="50" 
+                      cy="50" 
+                      r="40" 
+                      stroke="#FF3B00" 
+                      strokeWidth="2.5" 
+                      fill="transparent" 
+                      strokeDasharray="200 50"
+                      className="opacity-90"
+                      style={{ filter: 'drop-shadow(0 0 4px rgba(255,59,0,0.7))' }}
+                    />
+                  </svg>
+                  
+                  {/* Floating sparkles */}
+                  <div className="absolute top-2 right-3 text-orange-400">
+                    <Sparkles className="w-5 h-5 animate-pulse" />
+                  </div>
 
-              <div className="grid grid-cols-2 gap-2 text-left">
-                <div className="bg-white/[0.02] border border-white/5 rounded-lg p-2">
-                  <div className="text-[8px] text-gray-500 font-mono uppercase">Total Parsed Value</div>
-                  <div className="text-sm font-bold text-white mt-0.5">$28,450.00</div>
+                  {/* Sleek glass document sheet */}
+                  <div className="relative w-14 h-18 rounded-lg bg-neutral-900/90 border border-white/10 flex flex-col justify-between p-3 shadow-2xl">
+                    <div className="w-8 h-1 bg-gray-500 rounded" />
+                    <div className="w-10 h-1 bg-gray-600 rounded" />
+                    <div className="w-6 h-1 bg-gray-600 rounded" />
+                    
+                    {/* Orange fold on the document top-right corner */}
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-orange-500/30 rounded-bl" />
+                  </div>
+
+                  {/* Bright orange checkmark badge at bottom right */}
+                  <div className="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-[#FF3B00] border-2 border-[#06060a] flex items-center justify-center text-white shadow-[0_4px_15px_rgba(255,59,0,0.5)]">
+                    <Check className="w-4 h-4" strokeWidth={4} />
+                  </div>
                 </div>
-                <div className="bg-white/[0.02] border border-white/5 rounded-lg p-2">
-                  <div className="text-[8px] text-gray-500 font-mono uppercase">State Farm SLA</div>
-                  <div className="text-sm font-bold text-emerald-400 mt-0.5">100% Compliant</div>
+
+                {/* Vertical Divider line */}
+                <div className="hidden md:block w-[1px] self-stretch bg-gradient-to-b from-white/5 via-white/10 to-white/5 relative">
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[-1.5px] w-[4px] h-[4px] rounded-full bg-orange-500 shadow-[0_0_6px_#FF3B00]" />
                 </div>
-                <div className="col-span-2 bg-white/[0.02] border border-white/5 rounded-lg p-2 flex items-center justify-between text-[9px]">
-                  <span className="text-gray-400">Dehumidifier runtime limit (3 days)</span>
-                  <span className="text-emerald-400 font-bold">Auto-Enforced ✓</span>
+
+                {/* RIGHT SIDE: Metrics & Successful label */}
+                <div className="flex-1 flex flex-col justify-between gap-4 text-left w-full">
+                  
+                  {/* Top row of four small stats cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    
+                    {/* Stat 1: Line Items */}
+                    <div className="bg-[#08080c]/80 border border-white/5 rounded-xl p-2 flex flex-col items-center justify-center text-center shadow-lg hover:border-purple-500/25 transition-all duration-300">
+                      <div className="text-purple-400 mb-1 bg-purple-500/10 p-1.5 rounded-lg">
+                        <FileText className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-sm font-extrabold text-white leading-none">156</div>
+                      <div className="text-[7.5px] text-gray-500 font-mono mt-1 uppercase tracking-wider">Line Items</div>
+                    </div>
+
+                    {/* Stat 2: Total Amount */}
+                    <div className="bg-[#08080c]/80 border border-white/5 rounded-xl p-2 flex flex-col items-center justify-center text-center shadow-lg hover:border-orange-500/25 transition-all duration-300">
+                      <div className="text-orange-400 mb-1 bg-orange-500/10 p-1.5 rounded-lg">
+                        <Coins className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-sm font-extrabold text-white leading-none">$128,750</div>
+                      <div className="text-[7.5px] text-gray-500 font-mono mt-1 uppercase tracking-wider">Total Amount</div>
+                    </div>
+
+                    {/* Stat 3: Materials */}
+                    <div className="bg-[#08080c]/80 border border-white/5 rounded-xl p-2 flex flex-col items-center justify-center text-center shadow-lg hover:border-pink-500/25 transition-all duration-300">
+                      <div className="text-pink-400 mb-1 bg-pink-500/10 p-1.5 rounded-lg">
+                        <Package className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-sm font-extrabold text-white leading-none">46</div>
+                      <div className="text-[7.5px] text-gray-500 font-mono mt-1 uppercase tracking-wider">Materials</div>
+                    </div>
+
+                    {/* Stat 4: Labor */}
+                    <div className="bg-[#08080c]/80 border border-white/5 rounded-xl p-2 flex flex-col items-center justify-center text-center shadow-lg hover:border-blue-500/25 transition-all duration-300">
+                      <div className="text-blue-400 mb-1 bg-blue-500/10 p-1.5 rounded-lg">
+                        <User className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-sm font-extrabold text-white leading-none">$63,680</div>
+                      <div className="text-[7.5px] text-gray-500 font-mono mt-1 uppercase tracking-wider">Labor</div>
+                    </div>
+
+                  </div>
+
+                  {/* Bottom Success label and custom line decoration */}
+                  <div className="flex flex-col gap-1.5">
+                    <div>
+                      <div className="text-base sm:text-lg font-bold tracking-tight text-white leading-none">
+                        Document Parsed
+                      </div>
+                      <div className="text-lg sm:text-xl font-extrabold text-[#FF3B00] tracking-wide leading-tight mt-0.5">
+                        Successfully
+                      </div>
+                    </div>
+
+                    {/* Glowing orange timeline line decoration */}
+                    <div className="relative w-full h-[1px] bg-white/5 mt-1">
+                      {/* Glowing orange line */}
+                      <div className="absolute top-0 left-0 w-[45%] h-[1.5px] bg-[#FF3B00]" />
+                      {/* Glowing orange dot */}
+                      <div className="absolute top-[-2px] left-[45%] w-[5px] h-[5px] rounded-full bg-[#FF3B00] shadow-[0_0_8px_#FF3B00]" />
+                    </div>
+                  </div>
+
                 </div>
+
               </div>
             </motion.div>
           )}
@@ -288,7 +388,7 @@ const WorkflowAutomationMockup = () => {
   ];
 
   return (
-    <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
+    <div className="showcase-inner-mockup rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-500/[0.01] to-transparent pointer-events-none" />
 
       {/* Top Bar */}
@@ -362,7 +462,7 @@ const WorkflowAutomationMockup = () => {
 // Mockup 3: Smart Job Management Tracker
 const JobManagementMockup = () => {
   return (
-    <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
+    <div className="showcase-inner-mockup rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.01] to-transparent pointer-events-none" />
 
       {/* Top Bar */}
@@ -444,7 +544,7 @@ const CompanyBrainMockup = () => {
   }, []);
 
   return (
-    <div className="bg-[#08080c] border border-white/5 rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
+    <div className="showcase-inner-mockup rounded-2xl overflow-hidden shadow-2xl p-5 min-h-[300px] flex flex-col font-sans relative justify-between">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-500/[0.01] to-transparent pointer-events-none" />
 
       {/* Top Bar */}
@@ -672,7 +772,7 @@ const Showcase = () => {
                 ) : 'bg-white/5 text-gray-500 group-hover:text-gray-300 group-hover:bg-white/10'} transition-all duration-300`}>
                   <Icon className="w-4 h-4" />
                 </div>
-                <span className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase transition-colors relative z-10 ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                <span className={`text-[11px] sm:text-sm font-mono font-bold tracking-widest uppercase transition-colors relative z-10 ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                   {tab.label}
                 </span>
               </motion.button>
@@ -694,11 +794,7 @@ const Showcase = () => {
                 viewport={{ once: false, margin: "-120px" }}
                 onViewportEnter={() => setActiveTab(tab.id)}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-                className={`w-full rounded-3xl border p-6 sm:p-10 relative overflow-hidden group/card shadow-2xl transition-all duration-500 ${tab.id === 'doc-intelligence' ? 'border-[#FF3B00]/10 hover:border-[#FF3B00]/30 bg-gradient-to-br from-[#160804]/90 via-[#0a0604]/95 to-black shadow-[0_0_50px_rgba(255,59,0,0.02)] hover:shadow-[0_0_50px_rgba(255,59,0,0.06)]' :
-                  tab.id === 'workflow-automation' ? 'border-blue-500/10 hover:border-blue-500/30 bg-gradient-to-br from-[#040916]/90 via-[#02050b]/95 to-black shadow-[0_0_50px_rgba(59,130,246,0.02)] hover:shadow-[0_0_50px_rgba(59,130,246,0.06)]' :
-                    tab.id === 'job-management' ? 'border-emerald-500/10 hover:border-emerald-500/30 bg-gradient-to-br from-[#041609]/90 via-[#020b04]/95 to-black shadow-[0_0_50px_rgba(16,185,129,0.02)] hover:shadow-[0_0_50px_rgba(16,185,129,0.06)]' :
-                      'border-purple-500/10 hover:border-purple-500/30 bg-gradient-to-br from-[#090416]/90 via-[#04020b]/95 to-black shadow-[0_0_50px_rgba(168,85,247,0.02)] hover:shadow-[0_0_50px_rgba(168,85,247,0.06)]'
-                  }`}
+                className="w-full rounded-3xl p-6 sm:p-10 relative overflow-hidden group/card shadow-2xl transition-all duration-500 showcase-capability-card"
               >
                 {/* Subtle top-left internal theme glow */}
                 <div className={`absolute -left-20 -top-20 w-[200px] h-[200px] rounded-full blur-[80px] pointer-events-none opacity-20 transition-all duration-700 ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]' :
@@ -720,32 +816,32 @@ const Showcase = () => {
                 {/* Content Header area */}
                 <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-10 w-full relative z-10 text-left">
                   <div className="max-w-xl">
-                    <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
-                      <tab.icon className={`w-4 h-4 ${tab.id === 'doc-intelligence' ? 'text-[#FF3B00]' :
+                    <div className="flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">
+                      <tab.icon className={`w-4.5 h-4.5 ${tab.id === 'doc-intelligence' ? 'text-[#FF3B00]' :
                         tab.id === 'workflow-automation' ? 'text-blue-400' :
                           tab.id === 'job-management' ? 'text-emerald-400' :
                             'text-purple-400'
                         }`} />
                       {tab.label}
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-4 text-white">
+                    <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white leading-tight">
                       {tab.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-normal">
                       {tab.description}
                     </p>
 
                     {/* Extracted Features List */}
                     {tab.features && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5 mt-8">
                         {tab.features.map((feat, index) => (
-                          <div key={index} className="flex items-center gap-2 text-xs text-gray-400">
-                            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00]' :
+                          <div key={index} className="flex items-center gap-3.5 text-sm sm:text-base text-gray-300 font-medium">
+                            <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${tab.id === 'doc-intelligence' ? 'bg-[#FF3B00]/10 text-[#FF3B00]' :
                               tab.id === 'workflow-automation' ? 'bg-blue-500/10 text-blue-400' :
                                 tab.id === 'job-management' ? 'bg-emerald-500/10 text-emerald-400' :
                                   'bg-purple-500/10 text-purple-400'
                               }`}>
-                              <Check className="w-2.5 h-2.5" strokeWidth={3} />
+                              <Check className="w-3 h-3" strokeWidth={3.5} />
                             </div>
                             <span>{feat}</span>
                           </div>

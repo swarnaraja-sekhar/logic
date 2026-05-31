@@ -1,9 +1,15 @@
-import { Menu } from 'lucide-react';
+import { Menu, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +18,19 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-transparent'}`}>
@@ -43,11 +62,28 @@ const Navbar = () => {
           </div>
 
         <div className="flex items-center gap-6">
-        <div className="hidden md:flex items-center gap-4 text-xs">
-          <div className="text-gray-500 text-right">
-            1:27 PM<br/>(GMT+7)
-          </div>
-        </div>
+        <button 
+          onClick={toggleTheme}
+          className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/5 transition-all active:scale-95 cursor-pointer relative overflow-hidden group"
+          aria-label="Toggle Theme"
+        >
+          <motion.div
+            initial={false}
+            animate={{ rotate: theme === 'dark' ? 0 : 180, scale: theme === 'dark' ? 1 : 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute text-orange-400"
+          >
+            <Moon className="w-4.5 h-4.5" />
+          </motion.div>
+          <motion.div
+            initial={false}
+            animate={{ rotate: theme === 'light' ? 0 : -180, scale: theme === 'light' ? 1 : 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute text-amber-500"
+          >
+            <Sun className="w-4.5 h-4.5" />
+          </motion.div>
+        </button>
         <button className="hidden md:block px-5 py-2 rounded-full border border-white/20 hover:bg-white/10 transition-colors uppercase text-xs tracking-wider">
           Let's Talk
         </button>

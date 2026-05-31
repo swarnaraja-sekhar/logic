@@ -9,3 +9,834 @@ body {
 	background-color: #000;
 	color: #fff;
 }
+
+/* LIGHT THEME OVERRIDES - 100% Scoped under .light to preserve Dark Theme */
+.light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Dynamic Gradients (Remap Black Gradients to White slate-50 Gradients) */
+.light .from-black {
+  --tw-gradient-from: #f8fafc var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(248, 250, 252, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.light .to-black {
+  --tw-gradient-to: #f8fafc var(--tw-gradient-to-position) !important;
+}
+
+.light .via-transparent {
+  --tw-gradient-to: rgba(248, 250, 252, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(248, 250, 252, 0) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Radial Gradients on Hero Background and sections (Warning-Free Helper Selectors) */
+.light .hero-gradient-overlay {
+  background-image: radial-gradient(ellipse at center, transparent 10%, #f8fafc 85%) !important;
+}
+
+.light .hero-grid-pattern {
+  background-image: radial-gradient(ellipse at center, transparent 20%, #f8fafc 80%),
+                    linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Invert Dark Connections Backdrop image to a crisp Light vector graphic */
+.light img[alt="Cybernetic Grid Node Connections Backdrop"] {
+  opacity: 0.18 !important;
+  filter: invert(1) brightness(0.85) contrast(1.15) !important;
+}
+
+/* Background Overrides - REMOVE BLACK AND REPLACE WITH PRISTINE WHITE FOR ALL CARDS */
+.light .bg-black,
+.light .bg-\[\#050505\],
+.light .bg-\[\#000\],
+.light .bg-\[\#020204\]\/60,
+.light .bg-\[\#08090f\]\/97,
+.light .bg-\[\#060609\]\/98,
+.light .bg-\[\#0a0706\]\/95,
+.light .bg-neutral-950,
+.light .bg-neutral-950\/80,
+.light .bg-\[\#0a0a0f\]\/40,
+.light .bg-\[\#08080c\],
+.light .bg-\[\#0c0c12\],
+.light .bg-\[\#0a0a0f\],
+.light .bg-\[\#090a0f\]\/90,
+.light .bg-\[\#0b0b0f\],
+.light .bg-white\/\[0\.015\],
+.light .bg-white\/\[0\.01\],
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/5,
+.light .bg-black\/40 {
+  background-color: #ffffff !important;
+}
+
+/* macOS Window Chassis Header (Clean slate-100 Header in Light Mode) */
+.light .bg-\[\#0c0c12\],
+.light .bg-\[\#0c0c12\]\/80 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Sub-card slots (like details and rows) should be light gray slate-100 */
+.light .bg-neutral-900,
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/\[0\.01\] {
+  background-color: #f1f5f9 !important;
+}
+
+/* Glow Card Inner overrides to remove dark background & add subtle shadows */
+.light div[class*="shadow-[0_20px_50px_rgba(0,0,0,0.6)]"],
+.light .bg-\[\#08080c\] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Chat user inputs (white bubbles) should stay clear */
+.light .bg-white.text-neutral-950,
+.light .bg-white.text-neutral-900 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Dynamic ambient spot glows */
+.light .bg-\[\#FF3B00\]\/5,
+.light .bg-\[\#FF3B00\]\/10 {
+  background-color: rgba(255, 59, 0, 0.05) !important;
+}
+.light .bg-purple-950\/5 {
+  background-color: rgba(147, 51, 234, 0.03) !important;
+}
+.light .bg-cyan-950\/5 {
+  background-color: rgba(6, 182, 212, 0.03) !important;
+}
+
+/* Text Overrides - HIGH legibility deep slate */
+.light .text-white,
+.light .text-neutral-300,
+.light .text-\%5BD9D9D9\%5D,
+.light .text-\[\#D9D9D9\],
+.light h2.text-white,
+.light h3.text-white,
+.light h1.text-white {
+  color: #0f172a !important;
+}
+
+.light .text-gray-300,
+.light .text-gray-400,
+.light .text-gray-500,
+.light .text-gray-600 {
+  color: #334155 !important;
+}
+
+.light .text-gray-700,
+.light .text-gray-800 {
+  color: #64748b !important;
+}
+
+/* Borders */
+.light .border-white\/5,
+.light .border-white\/10,
+.light .border-white\/20,
+.light .border-neutral-900 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Left Sticky Navigation highlight active state */
+.light .bg-white\/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Special diagrammatic container elements */
+.light .bg-rose-950\/20 {
+  background-color: #fef2f2 !important;
+  border-color: rgba(239, 68, 68, 0.15) !important;
+}
+.light .bg-blue-950\/20 {
+  background-color: #eff6ff !important;
+  border-color: rgba(59, 130, 246, 0.15) !important;
+}
+.light .bg-purple-950\/20 {
+  background-color: #faf5ff !important;
+  border-color: rgba(168, 85, 247, 0.15) !important;
+}
+.light .bg-orange-950\/20 {
+  background-color: #fff7ed !important;
+  border-color: rgba(249, 115, 22, 0.15) !important;
+}
+.light .bg-emerald-950\/20 {
+  background-color: #f0fdf4 !important;
+  border-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Sidebar cognitive bubbles */
+.light .bg-neutral-950\/80,
+.light .bg-\[\#0a0a0f\] {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Audio wave bars */
+.light .bg-purple-400 {
+  background-color: #8b5cf6 !important;
+}
+
+/* Comparison columns */
+.light .bg-rose-500\/10 {
+  background-color: rgba(239, 68, 68, 0.08) !important;
+}
+.light .bg-emerald-500\/10 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+
+/* Floating FOMO card background */
+.light .bg-\#08080c\/60,
+.light .bg-\[\#08080c\]\/60 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Navigation bar background */
+.light nav {
+  background-color: rgba(248, 250, 252, 0.85) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+.light nav.bg-transparent {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* SVGs path connector wires */
+.light svg path[stroke="#1f1f2e"],
+.light svg line[stroke="#1f1f2e"] {
+  stroke: #cbd5e1 !important;
+}
+
+/* Learn more/CTA button overrides */
+.light button.bg-white {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+.light button.bg-white:hover {
+  background-color: #1e293b !important;
+}
+
+/* Accordion FAQs and cards */
+.light .bg-neutral-900\/50 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Connectors, dividers, and dotted grids */
+.light .bg-neutral-900 {
+  background-color: #e2e8f0 !important;
+}
+
+.light .text-emerald-400 {
+  color: #059669 !important;
+}
+
+.light .text-purple-400 {
+  color: #7c3aed !important;
+}
+
+.light .text-blue-400 {
+  color: #2563eb !important;
+}
+
+.light .text-\[\#FF3B00\] {
+  color: #dc2626 !important;
+}
+
+.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* ==========================================
+   PREMIUM LIGHT THEME VISIBILITY OVERRIDES
+   ========================================== */
+
+/* Card Gradients Overrides - Turn dark gradients into soft white-slate linear gradients */
+.light [class*="bg-gradient-to-br"] {
+  background-image: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+/* Card Container Overrides - Remove ALL black or custom dark card backgrounds */
+.light [class*="bg-[#08080c]"],
+.light [class*="bg-[#0c0c12]"],
+.light [class*="bg-[#0a0a0f]"],
+.light [class*="bg-[#0a0706]"],
+.light [class*="bg-[#050505]"],
+.light [class*="bg-black"],
+.light [class*="bg-neutral-950"],
+.light [class*="bg-[#0c0814]"],
+.light [class*="bg-[#120805]"],
+.light [class*="bg-[#160804]"],
+.light [class*="bg-[#040916]"],
+.light [class*="bg-[#041609]"],
+.light [class*="bg-[#090416]"],
+.light [class*="bg-[#0b0c10]"] {
+  background-color: #ffffff !important;
+}
+
+/* Card Sub-slots (rows, lists, details) - Elegant off-white slate-100 */
+.light [class*="bg-neutral-900"],
+.light [class*="bg-[#0a0a0f]/40"],
+.light [class*="bg-[#020204]/60"],
+.light [class*="bg-white/[0.02]"],
+.light [class*="bg-white/[0.01]"],
+.light [class*="bg-white/5"] {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Clean slate-200 border overrides for premium dashboard aesthetic */
+.light [class*="border-white/"],
+.light [class*="border-neutral-900"],
+.light [class*="border-[#FF3B00]/10"],
+.light [class*="border-[#FF3B00]/30"],
+.light [class*="border-red-500/"],
+.light [class*="border-emerald-500/"],
+.light [class*="border-blue-500/"],
+.light [class*="border-purple-500/"] {
+  border-color: #e2e8f0 !important;
+}
+
+/* Legibility Overrides - Clean slate-900 contrast */
+.light [class*="text-[#D9D9D9]"] {
+  color: #0f172a !important;
+}
+.light [class*="text-gray-400"],
+.light [class*="text-gray-500"] {
+  color: #334155 !important;
+}
+.light [class*="text-gray-200"],
+.light [class*="text-gray-300"] {
+  color: #1e293b !important;
+}
+
+
+/* Comparison Section Background Mockup Watermarks visibility and depth */
+.comparison-mockup-wrap {
+  opacity: 0.28 !important;
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+.comparison-mockup-img {
+  filter: brightness(0.85) contrast(1.1) !important;
+  transition: filter 0.4s ease !important;
+}
+.group\/old:hover .comparison-mockup-wrap,
+.group\/new:hover .comparison-mockup-wrap {
+  opacity: 0.38 !important;
+}
+
+/* Elevated Mockup contrast inside Light Mode card slots */
+.light .comparison-mockup-wrap {
+  opacity: 0.68 !important;
+}
+.light .comparison-mockup-img {
+  filter: brightness(0.96) contrast(1.04) !important;
+}
+.light .group\/old:hover .comparison-mockup-wrap,
+.light .group\/new:hover .comparison-mockup-wrap {
+  opacity: 0.82 !important;
+}
+
+/* Guarantee comparison cards are extremely clearly visible and distinct in Light Mode */
+.light .group\/old,
+.light .group\/new {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08), 0 0 25px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* Sub-icons inside Old Way & BigLogicAI lists in Light Mode */
+.light [class*="bg-red-950/20"] {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+}
+.light [class*="bg-emerald-950/20"] {
+  background-color: #d1fae5 !important;
+  border-color: #6ee7b7 !important;
+}
+
+/* Timeline elements in Light Mode - Guaranteeing NO dark circles or blocks */
+.light [class*="bg-[#0a0a0a]"] {
+  background-color: #ffffff !important; /* Circular buttons get crisp white */
+  border-color: #cbd5e1 !important;
+}
+
+.light div[class*="bg-[#0a0a0a]"].px-4 {
+  background-color: #f1f5f9 !important; /* Central block masks the timeline line perfectly using banner slate */
+}
+
+/* Fix "In Seconds." brand text visibility in Light Theme */
+.light .hero-in-seconds-text {
+  background-image: linear-gradient(to right, #dc2626 0%, #ea580c 50%, #f97316 100%) !important;
+  --tw-gradient-from: #dc2626 !important;
+  --tw-gradient-to: #f97316 !important;
+  --tw-gradient-stops: #dc2626, #ea580c, #f97316 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Fix "industry leaders" text visibility in Light Theme */
+.light .partners-industry-leaders-text {
+  background-image: linear-gradient(to right, #0f172a 0%, #1e293b 50%, #dc2626 100%) !important;
+  --tw-gradient-from: #0f172a !important;
+  --tw-gradient-to: #dc2626 !important;
+  --tw-gradient-stops: #0f172a, #1e293b, #dc2626 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Fix text opacity classes on light capsules (e.g. inline partners) */
+.light [class*="text-white/"] {
+  color: #475569 !important;
+}
+
+/* Override inline background gradients for partner cards in Light Theme */
+.light .partner-showcase-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 0 15px rgba(15, 23, 42, 0.02) !important;
+}
+
+.light .partner-showcase-card:hover {
+  border-color: #f97316 !important; /* Premium brand orange border on hover */
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Tagline legibility contrast inside Light Mode partner cards */
+.light .partner-showcase-card [class*="text-cyan-400/"],
+.light .partner-showcase-card [class*="text-teal-400/"] {
+  color: #0d9488 !important; /* Deep teal/cyan */
+}
+.light .partner-showcase-card [class*="text-amber-400/"],
+.light .partner-showcase-card [class*="text-yellow-400/"] {
+  color: #b45309 !important; /* Deep amber/yellow */
+}
+.light .partner-showcase-card [class*="text-violet-400/"] {
+  color: #6d28d9 !important; /* Deep violet */
+}
+.light .partner-showcase-card [class*="text-orange-400/"] {
+  color: #c2410c !important; /* Deep orange */
+}
+
+/* Badge background, border, and text tints for Light Mode partner cards */
+.light [class*="bg-cyan-500/"] {
+  background-color: #ecfeff !important;
+  color: #0891b2 !important;
+  border-color: #cffafe !important;
+}
+.light [class*="bg-amber-500/"] {
+  background-color: #fffbeb !important;
+  color: #d97706 !important;
+  border-color: #fef3c7 !important;
+}
+.light [class*="bg-violet-500/"] {
+  background-color: #f5f3ff !important;
+  color: #7c3aed !important;
+  border-color: #edd9ff !important;
+}
+.light [class*="bg-teal-500/"] {
+  background-color: #f0fdf4 !important;
+  color: #0d9488 !important;
+  border-color: #ccfbf1 !important;
+}
+.light [class*="bg-[#FF3B00]/"] {
+  background-color: #fff5f5 !important;
+  color: #e53e3e !important;
+  border-color: #fed7d7 !important;
+}
+.light [class*="bg-yellow-500/"] {
+  background-color: #fefce8 !important;
+  color: #ca8a04 !important;
+  border-color: #fef9c3 !important;
+}
+
+/* ========================================================
+   SHOWCASE CAPABILITIES SECTION - STUNNING UNIFIED SCHEME
+   ======================================================== */
+
+/* Left Sticky Tabs Card (Premium light-orange brand tint) */
+.light .from-\[\#120805\]\/90 {
+  background-image: linear-gradient(135deg, #ffffff 0%, #fffbf8 60%, #fff4ec 100%) !important;
+  border-color: rgba(255, 59, 0, 0.18) !important;
+  box-shadow: 0 20px 50px rgba(255, 59, 0, 0.03) !important;
+}
+
+/* 1. Unified Showcase Big Capability Cards (Same color across 4, uniform borders all sides) */
+.showcase-capability-card {
+  background-color: #08080c !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45) !important;
+}
+
+.showcase-capability-card:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Light Mode Override for Big Cards - Beautiful solid crisp white, uniform slate borders on all sides */
+.light .showcase-capability-card {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light .showcase-capability-card:hover {
+  border-color: #94a3b8 !important;
+}
+
+/* 2. Unified Inner Mockup Cards (Sleek solid color, uniform border on all sides) */
+.showcase-inner-mockup {
+  background-color: #050508 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Light Mode Override for Inner Mockups - Crisp slate-50 background, uniform border on all sides */
+.light .showcase-inner-mockup {
+  background-color: #f8fafc !important;
+  background-image: none !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* ========================================================
+   SERVICES SECTION PREMIUM VISIBILITY & HOVER EFFECTS (LIGHT THEME)
+   ======================================================== */
+
+/* High contrast header for Services in Light Mode */
+.light #services h2 {
+  color: #0f172a !important;
+}
+.light #services span {
+  color: #64748b !important;
+}
+.light #services .border-t,
+.light #services .border-b {
+  border-color: #e2e8f0 !important;
+}
+
+/* Services Hover Card styling in Light Mode - STAY WHITE THEME ON HOVER */
+.light #services [class*="hover:bg-[#08080a]"]:hover {
+  background-color: #f1f5f9 !important; /* Premium clean off-white background on hover */
+  border-color: rgba(255, 59, 0, 0.25) !important; /* Beautiful subtle orange border matching the active item */
+  box-shadow: 0 15px 35px rgba(255, 59, 0, 0.04) !important;
+}
+
+/* Force ID & Title to remain deep high-contrast slate-900 instead of white on hover */
+.light #services [class*="hover:bg-[#08080a]"]:hover span {
+  color: #0f172a !important;
+}
+.light #services [class*="hover:bg-[#08080a]"]:hover h3 {
+  color: #0f172a !important;
+}
+.light #services [class*="hover:bg-[#08080a]"]:hover h3 span {
+  color: inherit !important;
+}
+
+/* Override features and subtitle to be high-contrast dark gray/slate */
+.light #services [class*="hover:bg-[#08080a]"]:hover p {
+  color: #334155 !important;
+}
+
+.light #services [class*="hover:bg-[#08080a]"]:hover li {
+  color: #475569 !important;
+}
+
+.light #services [class*="hover:bg-[#08080a]"]:hover li span {
+  color: #475569 !important;
+}
+
+/* Override tags inside hovered card in Light Mode to stay visible and clear */
+.light #services [class*="hover:bg-[#08080a]"]:hover span[class*="border-white/10"] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  color: #475569 !important;
+  background-color: #ffffff !important;
+}
+
+/* Tag hover states remain active and vibrant */
+.light #services [class*="hover:bg-[#08080a]"]:hover span[class*="border-white/10"]:hover {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+  background-color: rgba(220, 38, 38, 0.05) !important;
+}
+
+/* ========================================================
+   FOOTER SECTION PREMIUM LIGHT THEME OVERRIDES
+   ======================================================== */
+
+/* Footer Background & Top Border */
+.light footer {
+  background-color: #ffffff !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+/* Grid lines in Light Mode footer */
+.light footer .absolute.inset-0.bg-\[linear-gradient\(to_right\,rgba\(255\,255\,255\,0\.01\)_1px\,transparent_1px\)\,linear-gradient\(to_bottom\,rgba\(255\,255\,255\,0\.01\)_1px\,transparent_1px\)\] {
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px) !important;
+  opacity: 1 !important;
+}
+
+/* Text & Headers visibility overrides */
+.light footer h3 {
+  color: #0f172a !important;
+}
+
+/* "Done in seconds" gradient text visible in light theme */
+.light footer h3 span[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(to right, #0f172a 0%, #7c3aed 50%, #dc2626 100%) !important;
+  color: transparent !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}
+
+.light footer span[class*="text-xl"] {
+  color: #0f172a !important;
+}
+
+.light footer span[class*="text-xl"] span[class*="text-gray-400"] {
+  color: #64748b !important;
+}
+
+/* Technical Indicators / Security Pills */
+.light footer span[class*="bg-white/\[0\.02\]"] {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+/* Subtitle text under subscribe logo */
+.light footer p[class*="text-gray-400"] {
+  color: #475569 !important;
+}
+
+/* Newsletter Capsule Input Form */
+.light footer form[class*="bg-white/"] {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light footer form[class*="bg-white/"]:focus-within {
+  border-color: #FF3B00 !important;
+}
+
+.light footer form[class*="bg-white/"] input {
+  color: #0f172a !important;
+}
+
+.light footer form[class*="bg-white/"] input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Footer links color and hover states */
+.light footer ul li a {
+  color: #475569 !important;
+}
+
+.light footer ul li a:hover {
+  color: #0f172a !important;
+}
+
+/* Social Icons and Buttons styling */
+.light footer a[class*="w-8 h-8"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+.light footer a[class*="w-8 h-8"]:hover {
+  background-color: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* SSH Console Button */
+.light footer a[class*="px-3\.5"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+.light footer a[class*="px-3\.5"]:hover {
+  background-color: #e2e8f0 !important;
+  border-color: rgba(255, 59, 0, 0.3) !important;
+  color: #dc2626 !important;
+}
+
+/* Copyright details bottom-left text */
+.light footer div[class*="text-gray-500"] {
+  color: #64748b !important;
+}
+
+.light footer div[class*="text-gray-500"] span {
+  color: #475569 !important;
+}
+
+/* Telemetry logs bar in Light Mode */
+.light footer div[class*="hidden lg:flex"] {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+.light footer div[class*="hidden lg:flex"] span {
+  color: #475569 !important;
+}
+
+/* ========================================================
+   FAQ SECTION PREMIUM LIGHT THEME OVERRIDES
+   ======================================================== */
+
+/* Section background & neon glows */
+.light #faq {
+  background-color: #ffffff !important;
+}
+
+.light #faq .bg-orange-950\/10 {
+  background-color: rgba(255, 59, 0, 0.02) !important;
+}
+
+.light #faq .bg-purple-950\/10 {
+  background-color: rgba(124, 58, 237, 0.02) !important;
+}
+
+/* Stark condense header FAQ text in Light Mode */
+.light #faq h2 {
+  color: #0f172a !important;
+  text-shadow: 0 4px 15px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light #faq p[class*="text-gray-400"] {
+  color: #475569 !important;
+}
+
+/* Accordion Card Container in Light Mode */
+.light #faq [class*="bg-\[\#09090b\]"] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.015) !important;
+}
+
+.light #faq [class*="bg-\[\#09090b\]"]:hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03) !important;
+}
+
+/* Question & Answer text visibility overrides */
+.light #faq h3 {
+  color: #1e293b !important;
+}
+
+.light #faq [class*="bg-\[\#09090b\]"]:hover h3 {
+  color: #0f172a !important;
+}
+
+.light #faq [class*="text-gray-400"] {
+  color: #475569 !important;
+}
+
+/* Rotating Plus Icon Container */
+.light #faq div[class*="bg-white/\[0\.02\]"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light #faq [class*="bg-\[\#09090b\]"]:hover div[class*="bg-white/\[0\.02\]"] {
+  border-color: rgba(255, 59, 0, 0.3) !important;
+}
+
+/* ========================================================
+   HOW WE WORK SECTION (PROCESS) - LIGHT THEME OVERRIDES
+   ======================================================== */
+
+/* Section background in Light Mode */
+.light #process,
+.light #process .sticky {
+  background-color: #f8fafc !important; /* Elegant off-white background */
+  border-top-color: #e2e8f0 !important;
+}
+
+/* Process Cards styling in Light Mode */
+.light .process-card {
+  background-color: #ffffff !important; /* Non-active cards get clean white background */
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.01) !important;
+}
+
+/* Highlighted (Active/Hovered) Card state in Light Mode */
+.light .process-card.active,
+.light .process-card:hover {
+  background-color: #ffffff !important;
+  border-color: rgba(255, 59, 0, 0.25) !important; /* Beautiful orange accent border */
+  box-shadow: 0 15px 35px rgba(255, 59, 0, 0.04), 0 5px 15px rgba(15, 23, 42, 0.01) !important;
+}
+
+/* Step number & Icon colors in Light Mode */
+.light .process-card span[class*="text-gray-500"] {
+  color: #64748b !important;
+}
+
+.light .process-card.active span[class*="text-[#FF3B00]"],
+.light .process-card:hover span[class*="text-[#FF3B00]"] {
+  color: #dc2626 !important;
+}
+
+/* Text elements inside non-active cards */
+.light .process-card h3 {
+  color: #475569 !important; /* Slate-600 for non-active titles */
+}
+
+.light .process-card p {
+  color: #64748b !important; /* Slate-500 for non-active descriptions */
+}
+
+/* Text elements inside active/hovered cards */
+.light .process-card.active h3,
+.light .process-card:hover h3 {
+  color: #0f172a !important; /* Deep slate-900 for active titles */
+}
+
+.light .process-card.active p,
+.light .process-card:hover p {
+  color: #334155 !important; /* Slate-700 for active descriptions */
+}
+
+/* Step indicators timeline column in Light Mode */
+.light #process .border-r {
+  border-color: #e2e8f0 !important;
+}
+
+/* Process Mobile stacked view cards */
+.light #process-mobile {
+  background-color: #f8fafc !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+.light #process-mobile h2,
+.light #process-mobile h3 {
+  color: #0f172a !important;
+}
+
+.light #process-mobile p {
+  color: #334155 !important;
+}
+
+.light #process-mobile div[class*="border-l"] {
+  border-color: #e2e8f0 !important;
+}

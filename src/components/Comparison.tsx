@@ -1,6 +1,5 @@
 import { AlertTriangle, CheckCircle2, ChevronRight, Clock, Code, DollarSign, Frown, Lightbulb, Rocket, Users, X, Zap, Activity, TrendingUp, Hourglass, FileText, UserPlus, Bug, Settings, Bot, TrendingDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import comparisonMockup from '../assets/comparison_mockup.png';
 
 const Comparison = () => {
   return (
@@ -117,12 +116,8 @@ const Comparison = () => {
             </span>
           </motion.div>
 
-          {/* Unified Card Left */}
           <div className="relative z-10 w-full rounded-3xl border border-red-500/10 bg-gradient-to-br from-[#0c0707]/90 via-[#070505]/95 to-black p-6 sm:p-10 flex-1 flex flex-col justify-between shadow-2xl overflow-hidden group/old shadow-[0_0_30px_rgba(239,68,68,0.02)]">
-            {/* Subtle internal gradient glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(239,68,68,0.04)_0%,transparent_60%)] pointer-events-none z-0" />
-
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {[
                 { i: Users, t: "ENDLESS MEETINGS", d: "Too much talking. No progress." },
                 { i: Hourglass, t: "SLOW DEVELOPMENT", d: "Weeks of planning. Months of execution." },
@@ -137,14 +132,14 @@ const Comparison = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: 0.05 * i, ease: [0.16, 1, 0.3, 1] as const }}
-                  className="flex items-start gap-3.5 group/item transition-all duration-300 hover:translate-x-1"
+                  className="flex items-start gap-4 p-4 rounded-2xl border border-red-500/10 bg-red-950/5 backdrop-blur-sm transition-all duration-300 hover:bg-red-900/10 hover:border-red-500/25 hover:translate-x-1 shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_15px_rgba(239,68,68,0.03)] group/item cursor-default"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-red-950/20 border border-red-500/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:bg-red-900/30 group-hover/item:border-red-500/30 shadow-[inset_0_0_10px_rgba(239,68,68,0.05)]">
-                    <c.i className="w-4 h-4 text-red-500/70 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-red-500" />
+                  <div className="w-12 h-12 rounded-xl bg-red-950/20 border border-red-500/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:bg-red-900/30 group-hover/item:border-red-500/30 shadow-[inset_0_0_10px_rgba(239,68,68,0.05)]">
+                    <c.i className="w-5 h-5 text-red-500/70 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-red-500" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-gray-200 tracking-wider mb-1 font-mono uppercase group-hover/item:text-white transition-colors">{c.t}</div>
-                    <div className="text-[11px] text-gray-500 leading-relaxed font-sans group-hover/item:text-gray-400 transition-colors">{c.d}</div>
+                    <div className="text-sm sm:text-base font-bold text-gray-200 tracking-wider mb-1.5 font-mono uppercase group-hover/item:text-white transition-colors">{c.t}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 leading-relaxed font-sans group-hover/item:text-gray-400 transition-colors">{c.d}</div>
                   </div>
                 </motion.div>
               ))}
@@ -172,37 +167,7 @@ const Comparison = () => {
 
           {/* Unified Card Right */}
           <div className="relative z-10 w-full rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-[#050c08]/90 via-[#030604]/95 to-black p-6 sm:p-10 flex-1 flex flex-col justify-between shadow-2xl overflow-hidden group/new shadow-[0_0_40px_rgba(16,185,129,0.06)]">
-            {/* Subtle internal neon emerald glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(16,185,129,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
-
-            {/* Mockup Image & Glow Backdrop (Internalized) */}
-            <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none opacity-20 sm:opacity-25 transition-opacity duration-300">
-              {/* Radial gradient background behind image */}
-              <div className="absolute w-[250px] h-[250px] bg-emerald-500 rounded-full blur-[90px] opacity-25"></div>
-
-              {/* Premium Floating Showcase Image */}
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [1, -1, 1]
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="w-[85%] max-w-[420px] aspect-[16/10] rounded-xl border border-emerald-500/20 overflow-hidden shadow-[0_12px_40px_rgba(16,185,129,0.15)] relative hidden sm:block bg-black"
-              >
-                <img
-                  src={comparisonMockup}
-                  alt="BigLogic AI Platform Mockup"
-                  className="w-full h-full object-cover filter brightness-[0.7] contrast-[1.1]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.05] via-transparent to-transparent pointer-events-none" />
-              </motion.div>
-            </div>
-
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {[
                 { i: Bot, t: "AI AGENTS", d: "Autonomous execution. Always working." },
                 { i: Zap, t: "INSTANT WORKFLOWS", d: "Automate everything. No manual work." },
@@ -217,14 +182,14 @@ const Comparison = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: 0.05 * i, ease: [0.16, 1, 0.3, 1] as const }}
-                  className="flex items-start gap-3.5 group/item transition-all duration-300 hover:translate-x-1"
+                  className="flex items-start gap-4 p-4 rounded-2xl border border-emerald-500/15 bg-emerald-950/5 backdrop-blur-sm transition-all duration-300 hover:bg-emerald-900/10 hover:border-emerald-500/30 hover:translate-x-1 shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_15px_rgba(16,185,129,0.04)] group/item cursor-default"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-950/20 border border-emerald-500/20 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:bg-emerald-500/20 group-hover/item:border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                    <c.i className="w-4 h-4 text-emerald-400 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-950/20 border border-emerald-500/20 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:bg-emerald-500/20 group-hover/item:border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <c.i className="w-5 h-5 text-emerald-400 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-white" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-white tracking-wider mb-1 font-mono uppercase group-hover/item:text-emerald-400 transition-colors">{c.t}</div>
-                    <div className="text-[11px] text-gray-300 leading-relaxed font-sans group-hover/item:text-white transition-colors">{c.d}</div>
+                    <div className="text-sm sm:text-base font-bold text-white tracking-wider mb-1.5 font-mono uppercase group-hover/item:text-emerald-400 transition-colors">{c.t}</div>
+                    <div className="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans group-hover/item:text-white transition-colors">{c.d}</div>
                   </div>
                 </motion.div>
               ))}

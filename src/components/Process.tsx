@@ -172,6 +172,7 @@ const STEPS = [
 const Process = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [hoveredStepIndex, setHoveredStepIndex] = useState<number | null>(null);
   const [pulse, setPulse] = useState(true);
 
   useEffect(() => {
@@ -231,106 +232,162 @@ const Process = () => {
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-between w-full h-[62vh] relative">
-          <div className="w-[12%] lg:w-[8%] flex-shrink-0 flex flex-col justify-center h-full relative z-20 select-none border-r border-white/5 pr-6">
-            <div className="flex flex-col gap-6 items-center">
-              <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#FF3B00] uppercase block transform rotate-90 origin-center whitespace-nowrap mb-16">
-                ( TIMELINE )
-              </span>
-              <div className="flex flex-col gap-1 items-center">
-                <span className="text-4xl sm:text-5xl font-black tracking-tight text-white font-mono">
-                  0{activeStep + 1}
-                </span>
-                <div className="h-16 w-[1px] bg-gradient-to-b from-purple-500 via-[#FF3B00] to-transparent my-3 shadow-[0_0_8px_rgba(255,59,0,0.5)]" />
-                <span className="text-gray-600 text-xs font-mono">/ 0{STEPS.length}</span>
+        {(() => {
+          const displayStep = hoveredStepIndex !== null ? hoveredStepIndex : activeStep;
+          return (
+            <div className="flex items-center justify-between w-full h-[62vh] relative">
+              <div className="w-[12%] lg:w-[8%] flex-shrink-0 flex flex-col justify-center h-full relative z-20 select-none border-r border-white/5 pr-6">
+                <div className="flex flex-col gap-6 items-center">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#FF3B00] uppercase block transform rotate-90 origin-center whitespace-nowrap mb-16">
+                    ( TIMELINE )
+                  </span>
+                  <div className="flex flex-col gap-1 items-center">
+                    <span className="text-4xl sm:text-5xl font-black tracking-tight text-white font-mono">
+                      0{displayStep + 1}
+                    </span>
+                    <div className="h-16 w-[1px] bg-gradient-to-b from-purple-500 via-[#FF3B00] to-transparent my-3 shadow-[0_0_8px_rgba(255,59,0,0.5)]" />
+                    <span className="text-gray-600 text-xs font-mono">/ 0{STEPS.length}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-[88%] lg:w-[92%] h-full relative overflow-hidden flex items-center pl-10 lg:pl-16">
+                <HorizontalConnector />
+                <motion.div 
+                  style={{ x }} 
+                  className="flex items-center h-full w-max relative z-10"
+                >
+                  <div className="w-[450px] lg:w-[550px] shrink-0 pr-12 lg:pr-24 flex flex-col justify-center h-full relative select-none z-10 text-left">
+                    <Reveal delay={0.1} yOffset={20}>
+                      <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#FF3B00] mb-5 uppercase block font-bold">
+                        ( PIPELINE GRAPH )
+                      </span>
+                    </Reveal>
+                    <h2 className="text-6xl sm:text-7xl lg:text-[7.5rem] font-bold leading-[0.85] tracking-tighter text-[#D9D9D9] uppercase font-sans scale-y-110 scale-x-95 origin-left">
+                      HOW WE
+                      <br />
+                      WORK
+                    </h2>
+                  </div>
+
+                  {STEPS.map((step, index) => {
+                    const isCurrent = displayStep === index;
+                    const isPassed = index < displayStep;
+                    const StepIcon = step.icon;
+
+                    return (
+                      <div key={index} className="flex items-center h-full shrink-0">
+                        <motion.div
+                          onMouseEnter={() => setHoveredStepIndex(index)}
+                          onMouseLeave={() => setHoveredStepIndex(null)}
+                          animate={{
+                            y: isCurrent ? -8 : 0,
+                            scale: isCurrent ? 1.012 : 1,
+                            borderColor: isCurrent 
+                              ? "rgba(255, 59, 0, 0.25)" 
+                              : isPassed 
+                                ? "rgba(16, 185, 129, 0.2)" 
+                                : "rgba(255, 255, 255, 0.03)",
+                            backgroundColor: isCurrent 
+                              ? "rgba(255, 255, 255, 0.01)" 
+                              : isPassed 
+                                ? "rgba(16, 185, 129, 0.01)" 
+                                : "rgba(0, 0, 0, 0.45)",
+                            opacity: isCurrent ? 1 : isPassed ? 0.75 : 0.35
+                          }}
+                          whileHover={{
+                            y: -6,
+                            scale: 1.008,
+                            borderColor: isCurrent 
+                              ? "rgba(255, 59, 0, 0.35)" 
+                              : "rgba(255, 255, 255, 0.15)",
+                            opacity: 1
+                          }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                          className={`w-[350px] lg:w-[420px] h-[80%] px-8 py-10 flex flex-col justify-between relative overflow-hidden border rounded-2xl group cursor-pointer process-card ${
+                            isCurrent ? 'active' : isPassed ? 'passed' : 'remaining'
+                          }`}
+                        >
+                          <div
+                            className={`absolute inset-0 bg-gradient-to-t from-[#FF3B00]/[0.015] via-transparent to-transparent transition-opacity duration-700 pointer-events-none ${
+                              isCurrent ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
+                            }`}
+                          />
+                          <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1000ms] ease-out pointer-events-none -z-10" />
+                          <div
+                            className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r transition-all duration-700 ${
+                              isCurrent 
+                                ? 'from-transparent via-[#FF3B00]/30 to-transparent scale-x-100 opacity-100' 
+                                : isPassed 
+                                  ? 'from-transparent via-emerald-500/30 to-transparent scale-x-100 opacity-80' 
+                                  : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-40'
+                            }`}
+                          />
+                          <div className="flex items-center justify-between select-none">
+                            <div className="flex items-center gap-1.5">
+                              <span className={`text-xs font-mono font-bold tracking-wider transition-colors duration-500 ${
+                                isCurrent 
+                                  ? 'text-[#FF3B00]' 
+                                  : isPassed 
+                                    ? 'text-emerald-400' 
+                                    : 'text-gray-500 group-hover:text-gray-300'
+                              }`}>
+                                {step.num}
+                              </span>
+                              <span className={`w-1 h-1 rounded-full bg-[#FF3B00] transition-transform duration-500 ${
+                                isCurrent ? 'scale-100' : 'scale-0'
+                              }`} />
+                            </div>
+                            
+                            {isPassed ? (
+                              <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/20 select-none uppercase tracking-wider shrink-0">
+                                DONE ✓
+                              </span>
+                            ) : (
+                              <StepIcon className={`w-4 h-4 transition-colors duration-500 ${
+                                isCurrent 
+                                  ? 'text-[#FF3B00]' 
+                                  : 'text-gray-600 group-hover:text-gray-400'
+                              }`} />
+                            )}
+                          </div>
+                          <div className="my-4">
+                            {step.illustration(pulse)}
+                          </div>
+                          <div className="space-y-3 text-left">
+                            <h3
+                              className={`text-xl lg:text-2xl font-bold tracking-tight leading-tight transition-colors duration-500 whitespace-pre-line ${
+                                isCurrent 
+                                  ? 'text-white' 
+                                  : isPassed 
+                                    ? 'text-gray-300' 
+                                    : 'text-gray-500 group-hover:text-gray-300'
+                              }`}
+                            >
+                              {step.title}
+                            </h3>
+                            <p className={`text-[11px] lg:text-xs leading-relaxed transition-colors duration-500 max-w-sm ${
+                              isCurrent 
+                                ? 'text-gray-400' 
+                                : isPassed 
+                                  ? 'text-gray-500' 
+                                  : 'text-gray-600 group-hover:text-gray-450'
+                            }`}>
+                              {step.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                        {index < STEPS.length - 1 && (
+                          <VerticalDivider isActive={isCurrent} isPassed={isPassed} />
+                        )}
+                      </div>
+                    );
+                  })}
+                </motion.div>
               </div>
             </div>
-          </div>
-
-          <div className="w-[88%] lg:w-[92%] h-full relative overflow-hidden flex items-center pl-10 lg:pl-16">
-            <HorizontalConnector />
-            <motion.div 
-              style={{ x }} 
-              className="flex items-center h-full w-max relative z-10"
-            >
-              <div className="w-[450px] lg:w-[550px] shrink-0 pr-12 lg:pr-24 flex flex-col justify-center h-full relative select-none z-10 text-left">
-                <Reveal delay={0.1} yOffset={20}>
-                  <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#FF3B00] mb-5 uppercase block font-bold">
-                    ( PIPELINE GRAPH )
-                  </span>
-                </Reveal>
-                <h2 className="text-6xl sm:text-7xl lg:text-[7.5rem] font-bold leading-[0.85] tracking-tighter text-[#D9D9D9] uppercase font-sans scale-y-110 scale-x-95 origin-left">
-                  HOW WE
-                  <br />
-                  WORK
-                </h2>
-              </div>
-
-            {STEPS.map((step, index) => {
-              const isActive = activeStep === index;
-              const StepIcon = step.icon;
-              return (
-                <div key={index} className="flex items-center h-full shrink-0">
-                  <motion.div
-                    animate={{
-                      y: isActive ? -8 : 0,
-                      scale: isActive ? 1.012 : 1,
-                      borderColor: isActive ? "rgba(255, 59, 0, 0.25)" : "rgba(255, 255, 255, 0.05)",
-                      backgroundColor: isActive ? "rgba(255, 255, 255, 0.01)" : "rgba(0, 0, 0, 0.3)"
-                    }}
-                    whileHover={{
-                      y: isActive ? -8 : -4,
-                      scale: isActive ? 1.012 : 1.004,
-                      borderColor: isActive ? "rgba(255, 59, 0, 0.35)" : "rgba(255, 255, 255, 0.1)"
-                    }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="w-[350px] lg:w-[420px] h-[80%] px-8 py-10 flex flex-col justify-between relative overflow-hidden border rounded-2xl group cursor-pointer"
-                  >
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t from-[#FF3B00]/[0.015] via-transparent to-transparent transition-opacity duration-700 pointer-events-none ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
-                        }`}
-                    />
-                    <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1000ms] ease-out pointer-events-none -z-10" />
-                    <div
-                      className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF3B00]/30 to-transparent transition-all duration-700 ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-40'
-                        }`}
-                    />
-                    <div className="flex items-center justify-between select-none">
-                      <div className="flex items-center gap-1.5">
-                        <span className={`text-xs font-mono font-bold tracking-wider transition-colors duration-500 ${isActive ? 'text-[#FF3B00]' : 'text-gray-500 group-hover:text-gray-300'
-                          }`}>
-                          {step.num}
-                        </span>
-                        <span className={`w-1 h-1 rounded-full bg-[#FF3B00] transition-transform duration-500 ${isActive ? 'scale-100' : 'scale-0'
-                          }`} />
-                      </div>
-                      <StepIcon className={`w-4 h-4 transition-colors duration-500 ${isActive ? 'text-[#FF3B00]' : 'text-gray-600 group-hover:text-gray-400'}`} />
-                    </div>
-                    <div className="my-4">
-                      {step.illustration(pulse)}
-                    </div>
-                    <div className="space-y-3 text-left">
-                      <h3
-                        className={`text-xl lg:text-2xl font-bold tracking-tight leading-tight transition-colors duration-500 whitespace-pre-line ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'
-                          }`}
-                      >
-                        {step.title}
-                      </h3>
-                      <p className={`text-[11px] lg:text-xs leading-relaxed transition-colors duration-500 max-w-sm ${isActive ? 'text-gray-400' : 'text-gray-600 group-hover:text-gray-450'
-                        }`}>
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                  {index < STEPS.length - 1 && (
-                    <VerticalDivider isActive={isActive} />
-                  )}
-                </div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </div>
+          );
+        })()}
       </div>
     </section>
   );
@@ -347,7 +404,7 @@ const ProcessMobile = () => {
   }, []);
 
   return (
-    <section className="relative z-20 w-full block md:hidden bg-black px-6 py-24 border-t border-white/5">
+    <section id="process-mobile" className="relative z-20 w-full block md:hidden bg-black px-6 py-24 border-t border-white/5">
       <div className="flex flex-col space-y-16">
         <div className="flex flex-col text-left">
           <span className="text-[10px] font-mono tracking-widest text-[#FF3B00] mb-2 uppercase">

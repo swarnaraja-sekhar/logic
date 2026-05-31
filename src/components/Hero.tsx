@@ -12,7 +12,6 @@ import {
   Maximize2,
   Bell,
   DollarSign,
-  Flame,
   Activity,
   ShieldAlert,
   Clock,
@@ -153,11 +152,11 @@ const Hero = () => {
         />
         {/* Soft fading overlays to blend perfectly into pure black transitions */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,#000_85%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,#000_85%)] pointer-events-none hero-gradient-overlay" />
       </div>
 
       {/* Dynamic Background Visual Grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#000_80%),linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-40 z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#000_80%),linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-40 z-0 hero-grid-pattern" />
 
       {/* Tri-color ambient mesh spotlights */}
       <div className="absolute top-[35%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-[#FF3B00]/5 blur-[140px] rounded-full pointer-events-none z-0" />
@@ -169,22 +168,6 @@ const Hero = () => {
       <div className="absolute inset-y-0 right-[8%] w-[1px] border-r border-dashed border-white/5 pointer-events-none z-0" />
 
       {/* FLOATING GLASSMORPHISM FOMO CARDS (Drifting behind text & mockup) */}
-
-      {/* FOMO Card 2: Mid-Left Lower */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute left-[4%] top-[70%] z-10 hidden xl:flex items-center gap-3.5 p-3 rounded-2xl bg-[#08080c]/60 border border-white/5 backdrop-blur-md shadow-2xl"
-      >
-        <div className="w-8 h-8 rounded-lg bg-[#FF3B00]/10 border border-[#FF3B00]/20 flex items-center justify-center text-[#FF3B00]">
-          <Flame className="w-4.5 h-4.5" />
-        </div>
-        <div className="text-left font-sans">
-          <div className="text-[10px] font-mono font-black text-[#FF3B00] tracking-wider">10X OUTPUT</div>
-          <div className="text-[8px] text-gray-500 font-medium">Done by 1 member</div>
-        </div>
-      </motion.div>
 
       {/* FOMO Card 3: Top-Right */}
       <motion.div
@@ -256,7 +239,7 @@ const Hero = () => {
             >
               10 Members Worth Of Work.<br />
               Done By 1 Member. <br />
-              <span className="bg-gradient-to-r from-white via-orange-400 to-[#FF3B00] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,59,0,0.15)]">In Seconds.</span>
+              <span className="bg-gradient-to-r from-white via-orange-400 to-[#FF3B00] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(255,59,0,0.15)] hero-in-seconds-text">In Seconds.</span>
             </motion.h1>
 
             {/* Original Subheadline */}
@@ -308,34 +291,6 @@ const Hero = () => {
               <button className="w-full sm:w-auto px-7 py-3.5 rounded-full border border-white/10 hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.05] font-medium text-xs tracking-wider text-gray-300 hover:text-white active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer uppercase">
                 Let's Talk
               </button>
-            </motion.div>
-
-            {/* Original Bottom Details (Beyond Automation...) */}
-            <motion.div
-              variants={itemVariants}
-              className="w-full border-t border-white/5 pt-5 space-y-4 text-left"
-            >
-              <div className="space-y-1">
-                <h3 className="text-base font-bold tracking-tight text-white">
-                  Beyond Automation. <span className="text-[#FF3B00]">Built For Dominance.</span>
-                </h3>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  We don't just automate tasks. We build intelligent systems that give you an unfair advantage.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 select-none">
-                <div className="flex -space-x-2.5">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-black bg-neutral-800 overflow-hidden relative grayscale">
-                      <img src={`https://i.pravatar.cc/100?img=${i + 12}`} alt="avatar" className="w-full h-full object-cover mix-blend-luminosity" />
-                    </div>
-                  ))}
-                </div>
-                <div className="text-[10px] text-gray-500 font-semibold leading-tight">
-                  Trusted by founders worldwide.
-                </div>
-              </div>
             </motion.div>
           </motion.div>
 

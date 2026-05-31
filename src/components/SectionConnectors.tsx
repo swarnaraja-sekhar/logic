@@ -2,21 +2,26 @@ import { motion } from 'framer-motion';
 
 interface VerticalDividerProps {
   isActive: boolean;
+  isPassed?: boolean;
 }
 
-export const VerticalDivider = ({ isActive }: VerticalDividerProps) => {
+export const VerticalDivider = ({ isActive, isPassed }: VerticalDividerProps) => {
   return (
     <div className="w-[1px] h-full relative self-stretch hidden md:block shrink-0">
       {/* Background low-opacity line */}
-      <div className="absolute inset-0 bg-white/5" />
+      <div className={`absolute inset-0 ${isPassed ? 'bg-emerald-500/10' : 'bg-white/5'}`} />
       
       {/* Active Glowing Overlay */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FF3B00] to-transparent"
+        className={`absolute inset-0 bg-gradient-to-b ${
+          isPassed 
+            ? 'from-transparent via-emerald-500/30 to-transparent' 
+            : 'from-transparent via-[#FF3B00] to-transparent'
+        }`}
         initial={{ opacity: 0, scaleY: 0 }}
         animate={{ 
-          opacity: isActive ? 1 : 0, 
-          scaleY: isActive ? 1 : 0,
+          opacity: isActive || isPassed ? 1 : 0, 
+          scaleY: isActive || isPassed ? 1 : 0,
         }}
         transition={{ 
           duration: 0.8, 

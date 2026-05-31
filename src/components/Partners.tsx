@@ -197,7 +197,7 @@ const Partners = () => {
               className="text-[clamp(1.8rem,3vw,2.6rem)] font-black tracking-tight leading-[1.1] text-white relative z-10"
             >
               Proud partner of <br />
-              <span className="bg-gradient-to-r from-white via-gray-300 to-[#FF3B00] bg-clip-text text-transparent">industry leaders</span>
+              <span className="bg-gradient-to-r from-white via-gray-300 to-[#FF3B00] bg-clip-text text-transparent partners-industry-leaders-text">industry leaders</span>
             </motion.h2>
 
             <motion.p 
@@ -253,7 +253,7 @@ const Partners = () => {
                       borderColor: "rgba(255, 59, 0, 0.4)",
                       transition: { duration: 0.35, ease: "easeOut" }
                     }}
-                    className={`col-span-1 ${colSpan} relative rounded-2xl border p-6 min-h-[170px] sm:min-h-[190px] flex flex-col justify-between items-start cursor-pointer overflow-hidden shadow-2xl group ${card.style.hoverGlow}`}
+                    className={`col-span-1 ${colSpan} relative rounded-2xl border p-6 min-h-[170px] sm:min-h-[190px] flex flex-col justify-between items-start cursor-pointer overflow-hidden shadow-2xl group ${card.style.hoverGlow} partner-showcase-card`}
                   >
                     
                     {/* Glowing highlight ring */}
