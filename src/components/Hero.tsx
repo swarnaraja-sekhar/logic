@@ -50,7 +50,7 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // Right-side Simulation States (Customized for BigLogicAI Reconstruction Workflow)
-  const [demoStep, setDemoStep] = useState(0); // 0: Typing, 1: Planning/Logs, 2: Graph Executing, 3: Completed
+  const [demoStep, setDemoStep] = useState(0); // 0: Typing, 1: Logs, 2: Graph, 3: Claim Result, 4: High-impact FOMO Card
   const [typedPrompt, setTypedPrompt] = useState("");
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
@@ -121,8 +121,15 @@ const Hero = () => {
 
     if (demoStep === 3) {
       const timeout = setTimeout(() => {
+        setDemoStep(4);
+      }, 4000); // show claim result card for 4s then show FOMO card
+      return () => clearTimeout(timeout);
+    }
+
+    if (demoStep === 4) {
+      const timeout = setTimeout(() => {
         handleReset();
-      }, 5000); // show result card for 5s then loop
+      }, 7000); // show FOMO card for 7s then loop/reset
       return () => clearTimeout(timeout);
     }
   }, [demoStep, isPlaying, typedPrompt, terminalLines, progress]);
@@ -369,7 +376,7 @@ const Hero = () => {
               </div>
 
               {/* Dashboard Workspace */}
-              <div className="flex-1 grid grid-cols-1 sm:grid-cols-12 overflow-hidden">
+              <div className="flex-1 grid grid-cols-1 sm:grid-cols-12 overflow-hidden relative">
 
                 {/* Left Column: Interactive Chat & Live AI Terminal */}
                 <div className="sm:col-span-5 border-r border-white/5 flex flex-col justify-between p-4 bg-[#0a0a0f]/40 relative overflow-y-auto">
@@ -638,6 +645,129 @@ const Hero = () => {
 
                 </div>
 
+                {/* Step 4: High-Impact FOMO Card Overlay */}
+                <AnimatePresence>
+                  {demoStep === 4 && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.97 }}
+                      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute inset-0 z-30 bg-[#060609]/98 flex items-center justify-center p-4 md:p-6"
+                    >
+                      {/* Card container with orange neon glow on the right, matching the image */}
+                      <div className="w-full h-full rounded-2xl border border-white/10 bg-[#090a0f]/90 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex overflow-hidden relative">
+                        {/* Neon orange gradient border glow specifically on the right side */}
+                        <div className="absolute top-0 bottom-0 right-0 w-[50%] bg-[radial-gradient(ellipse_at_right,rgba(255,59,0,0.18),transparent_70%)] pointer-events-none" />
+                        <div className="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-[#FF3B00]/60 to-transparent shadow-[0_0_15px_#FF3B00]" />
+                        
+                        {/* Left side: FOMO Title Text (60% width) */}
+                        <div className="w-[58%] h-full flex flex-col justify-center px-6 md:px-10 text-left relative z-10">
+                          <h2 className="text-xl md:text-3.5xl lg:text-4xl font-extrabold tracking-tight leading-[1.15] text-white">
+                            Others are <br />
+                            <span className="text-[#FF3B00]">already using.</span>
+                          </h2>
+                          <h2 className="text-xl md:text-3.5xl lg:text-4xl font-extrabold tracking-tight leading-[1.15] text-white mt-4 md:mt-6">
+                            You're still <br />
+                            <span className="text-[#FF3B00]">behind.</span>
+                          </h2>
+                        </div>
+
+                        {/* Vertical divider */}
+                        <div className="w-[1px] h-[65%] bg-white/10 self-center" />
+
+                        {/* Right side: Glowing Speedometer Dial + Done in Seconds text (42% width) */}
+                        <div className="w-[42%] h-full flex flex-col items-center justify-center px-4 md:px-6 relative z-10">
+                          {/* Animated SVG Speedometer Dial */}
+                          <div className="relative w-28 h-20 md:w-36 md:h-24 flex items-center justify-center">
+                            {/* Neon glow behind the dial */}
+                            <div className="absolute w-16 h-16 bg-[#FF3B00]/10 blur-md rounded-full pointer-events-none" />
+                            
+                            <svg className="w-full h-full overflow-visible" viewBox="0 0 160 100">
+                              <defs>
+                                <filter id="orange-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                              </defs>
+
+                              {/* Ticked speed/motion lines trailing behind from the left */}
+                              <g stroke="#FF3B00" strokeWidth="2" strokeLinecap="round" opacity="0.6">
+                                {/* horizontal speed lines */}
+                                <line x1="15" y1="42" x2="32" y2="42" strokeDasharray="6 3" />
+                                <line x1="5" y1="50" x2="28" y2="50" strokeDasharray="8 4" />
+                                <line x1="12" y1="58" x2="30" y2="58" strokeDasharray="5 3" />
+                                <line x1="22" y1="66" x2="35" y2="66" strokeDasharray="4 2" />
+                              </g>
+
+                              {/* Speedometer Arc Circle (ticked/open at bottom) */}
+                              <path
+                                d="M 50 82 A 40 40 0 1 1 126 76"
+                                fill="none"
+                                stroke="#FF3B00"
+                                strokeWidth="3.5"
+                                strokeLinecap="round"
+                                filter="url(#orange-glow)"
+                              />
+
+                              {/* Speedometer smaller inner arc */}
+                              <path
+                                d="M 62 76 A 28 28 0 1 1 115 72"
+                                fill="none"
+                                stroke="#FF3B00"
+                                strokeWidth="1"
+                                strokeDasharray="2 3"
+                                opacity="0.4"
+                              />
+
+                              {/* Speed ticks inside the speedometer */}
+                              <g stroke="#FF3B00" strokeWidth="1.5" opacity="0.6">
+                                <line x1="53" y1="62" x2="59" y2="64" />
+                                <line x1="61" y1="44" x2="66" y2="48" />
+                                <line x1="77" y1="32" x2="80" y2="38" />
+                                <line x1="97" y1="29" x2="97" y2="35" />
+                                <line x1="117" y1="35" x2="114" y2="41" />
+                                <line x1="131" y1="49" x2="126" y2="53" />
+                                <line x1="137" y1="68" x2="131" y2="70" />
+                              </g>
+
+                              {/* Speedometer pointer (hand) pointing at 2 o'clock */}
+                              <g transform="translate(93, 62)">
+                                {/* Joint circle */}
+                                <circle cx="0" cy="0" r="3.5" fill="#FF3B00" />
+                                {/* needle */}
+                                <line
+                                  x1="0"
+                                  y1="0"
+                                  x2="28"
+                                  y2="-24"
+                                  stroke="#FF3B00"
+                                  strokeWidth="3"
+                                  strokeLinecap="round"
+                                  filter="url(#orange-glow)"
+                                />
+                                {/* Outer circle frame */}
+                                <circle cx="0" cy="0" r="1.5" fill="white" />
+                              </g>
+                            </svg>
+                          </div>
+
+                          {/* Speed description text */}
+                          <div className="text-center font-sans mt-3 md:mt-4">
+                            <div className="text-[11px] md:text-sm font-semibold tracking-tight text-white leading-snug">
+                              Months of work <br />
+                              <span className="text-[#FF3B00] font-bold">done in seconds</span>
+                            </div>
+                            <div className="text-[8px] md:text-[9px] text-gray-500 font-medium font-mono mt-1">
+                              by BigLogicAi
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
               </div>
 
               {/* Interactive Playback Control Footer Panel */}
@@ -683,6 +813,12 @@ const Hero = () => {
                     <div className="flex items-center gap-1 text-emerald-400 font-bold uppercase tracking-wider">
                       <Check className="w-2.5 h-2.5" strokeWidth={3.5} />
                       <span>Completed in 3.8s</span>
+                    </div>
+                  )}
+                  {demoStep === 4 && (
+                    <div className="flex items-center gap-1 text-[#FF3B00] font-bold uppercase tracking-wider">
+                      <Zap className="w-2.5 h-2.5 animate-bounce" strokeWidth={3.5} />
+                      <span>10x Acceleration Live</span>
                     </div>
                   )}
                 </div>
