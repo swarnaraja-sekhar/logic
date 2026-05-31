@@ -1,4 +1,4 @@
-import { ChevronRight, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
