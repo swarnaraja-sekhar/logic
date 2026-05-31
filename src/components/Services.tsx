@@ -4,31 +4,57 @@ import { motion } from 'framer-motion';
 const SERVICES = [
   {
     id: "01",
-    title: "Autonomous AI Agents",
-    description: "Self-healing pipelines, automated reviews, and intelligent resource allocation running 24/7 without manual intervention.",
-    tags: ["Auto-Healing", "Code Review", "Resource Management", "24/7 Operations"],
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop"
+    emoji: "📄",
+    title: "Draw Schedule Generator",
+    subtitle: "AI reads Xactimate PDFs and automatically generates:",
+    features: [
+      "Draw schedules",
+      "Branded contracts",
+      "Milestone breakdowns"
+    ],
+    tags: ["Xactimate Reader", "Draw Schedules", "Milestone Breakdowns", "PDF Extraction"],
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "02",
-    title: "Intelligent Workflows",
-    description: "Connect APIs, webhooks, and scripts seamlessly with smart triggers designed for the most demanding enterprise deployments.",
-    tags: ["API Integration", "Webhooks", "Smart Triggers", "Enterprise Scalability"],
-    image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop"
+    emoji: "🪵",
+    title: "Material Extraction",
+    subtitle: "AI extracts materials from estimates:",
+    features: [
+      "Flooring",
+      "Paint",
+      "Fixtures",
+      "Supplies",
+      "creates structured Excel sheets automatically."
+    ],
+    tags: ["Material Audit", "Excel Generator", "Reconstruction Supplies", "Automated Estimating"],
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "03",
-    title: "AI-Driven Development",
-    description: "Real-time context-aware autocomplete, flawless refactoring, and natural language code generation directly in your IDE.",
-    tags: ["Context-Aware", "Refactoring", "Code Generation", "IDE Native"],
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop"
+    emoji: "🎙️",
+    title: "Voice-to-Action",
+    subtitle: "AI converts meetings into:",
+    features: [
+      "Transcriptions",
+      "Speaker identification",
+      "Summaries",
+      "Action items"
+    ],
+    tags: ["Intelligent Audio", "Speaker ID", "Instant Action Items", "Meeting Summaries"],
+    image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "04",
-    title: "Team Orchestration",
-    description: "Standardize best practices, share environments securely, and collaborate dramatically faster without the red tape.",
-    tags: ["Best Practices", "Shared Environments", "Collaboration", "Access Control"],
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+    emoji: "📚",
+    title: "Document Intelligence",
+    subtitle: "Users can ask:",
+    features: [
+      "“What does our contract say about payment terms?”",
+      "and AI instantly answers from uploaded company documents."
+    ],
+    tags: ["Natural Language Query", "Company SOP Search", "Instant Contract Retrieval", "Verified Answers"],
+    image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
@@ -48,15 +74,15 @@ const Services = () => {
             className="flex items-start"
           >
             <h2 
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[8.5rem] font-black uppercase tracking-[0.05em] sm:tracking-[0.08em] leading-none text-[#cccccc]"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[8rem] font-black uppercase tracking-[0.05em] sm:tracking-[0.08em] leading-none text-[#cccccc]"
               style={{ fontFamily: "Impact, sans-serif", transform: "scaleY(1.4)", transformOrigin: "bottom" }}
             >
-              HOW WE CAN HELP
+              THE REAL AI FEATURES
             </h2>
             <span 
-              className="text-[10px] sm:text-xs uppercase tracking-widest text-[#cccccc] font-medium ml-2 sm:ml-4 mt-2 sm:mt-4"
+              className="text-[10px] sm:text-xs uppercase tracking-widest text-[#cccccc] font-medium ml-2 sm:ml-4 mt-2 sm:mt-4 whitespace-nowrap"
             >
-              (SERVICES)
+              (4 INTELLIGENT AGENTS)
             </span>
           </motion.div>
         </div>
@@ -124,7 +150,7 @@ const Services = () => {
                   </motion.div>
 
                   {/* Text Info */}
-                  <div className="flex-1 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center text-left">
                     
                     {/* Smooth horizontal translate shift on hover */}
                     <motion.h3 
@@ -133,9 +159,10 @@ const Services = () => {
                         color: isHovered ? "#ffffff" : "#888888" 
                       }}
                       transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                      className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight"
+                      className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight flex items-center gap-3.5"
                     >
-                      {service.title}
+                      <span className="text-3xl md:text-5xl lg:text-6xl">{service.emoji}</span>
+                      <span>{service.title}</span>
                     </motion.h3>
                     
                     {/* Expandable sub-info */}
@@ -153,9 +180,20 @@ const Services = () => {
                       style={{ overflow: "hidden" }}
                     >
                       <div className="pt-6 sm:pt-8 w-full max-w-3xl">
-                        <p className="text-gray-400 text-lg sm:text-2xl font-medium mb-8 leading-snug">
-                          {service.description}
+                        <p className="text-gray-400 text-lg sm:text-2xl font-medium mb-5 leading-snug">
+                          {service.subtitle}
                         </p>
+
+                        {/* Bulleted Sub-Features */}
+                        <ul className="space-y-2.5 mb-8 pl-4">
+                          {service.features.map((feat, fIdx) => (
+                            <li key={fIdx} className="flex items-center gap-3 text-base sm:text-lg text-gray-300">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B00]" />
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+
                         <div className="flex flex-wrap gap-3">
                           {service.tags.map((tag, tIdx) => (
                             <motion.span 
