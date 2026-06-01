@@ -12,34 +12,50 @@ import {
   Volume2,
   Coins,
   Package,
-  User
+  User,
+  Mail,
+  Image as ImageIcon,
+  Receipt,
+  Shield,
+  Download,
+  FileSpreadsheet,
+  Eye
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Mockup 1: AI Document Intelligence Dynamic Simulator
-const DocIntelligenceMockup = () => {
-  const [step, setStep] = useState(0);
-  const [progress, setProgress] = useState(0);
+const DocIntelligenceMockup = ({
+  step,
+  setStep,
+  progress,
+  setProgress
+}: {
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  progress: number;
+  setProgress: React.Dispatch<React.SetStateAction<number>>;
+}) => {
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setStep((prev) => {
-        if (prev === 0) {
-          setProgress(0);
-          return 1;
-        }
-        if (prev === 1) {
-          return 1; // Handled by progress timer
-        }
-        if (prev === 2) {
-          return 0;
-        }
-        return 0;
-      });
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
+    if (step === 0) {
+      const t = setTimeout(() => {
+        setProgress(0);
+        setStep(1);
+      }, 5000);
+      return () => clearTimeout(t);
+    }
+    if (step === 2) {
+      const t = setTimeout(() => {
+        setStep(3);
+      }, 2000);
+      return () => clearTimeout(t);
+    }
+    if (step === 3) {
+      const t = setTimeout(() => {
+        setStep(0);
+      }, 4000);
+      return () => clearTimeout(t);
+    }
+  }, [step]);
 
   useEffect(() => {
     if (step === 1) {
@@ -238,31 +254,31 @@ const DocIntelligenceMockup = () => {
             >
               {/* Outer card container with premium orange/purple glowing borders */}
               <div className="relative rounded-2xl border border-[#FF3B00]/25 bg-[#06060a]/90 p-5 shadow-[0_0_40px_rgba(255,59,0,0.08)] overflow-hidden flex flex-col md:flex-row gap-6 items-center">
-                
+
                 {/* Subtle internal glowing spots */}
                 <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-                
+
                 {/* LEFT SIDE: Document Circle Checkmark */}
                 <div className="flex-shrink-0 relative flex items-center justify-center w-32 h-32">
                   {/* Glowing orange/yellow background blob */}
                   <div className="absolute inset-2 rounded-full bg-orange-500/[0.04] blur-md" />
-                  
+
                   {/* Outer orange track with gap */}
                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                    <circle 
-                      cx="50" 
-                      cy="50" 
-                      r="40" 
-                      stroke="#FF3B00" 
-                      strokeWidth="2.5" 
-                      fill="transparent" 
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="40"
+                      stroke="#FF3B00"
+                      strokeWidth="2.5"
+                      fill="transparent"
                       strokeDasharray="200 50"
                       className="opacity-90"
                       style={{ filter: 'drop-shadow(0 0 4px rgba(255,59,0,0.7))' }}
                     />
                   </svg>
-                  
+
                   {/* Floating sparkles */}
                   <div className="absolute top-2 right-3 text-orange-400">
                     <Sparkles className="w-5 h-5 animate-pulse" />
@@ -273,7 +289,7 @@ const DocIntelligenceMockup = () => {
                     <div className="w-8 h-1 bg-gray-500 rounded" />
                     <div className="w-10 h-1 bg-gray-600 rounded" />
                     <div className="w-6 h-1 bg-gray-600 rounded" />
-                    
+
                     {/* Orange fold on the document top-right corner */}
                     <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-orange-500/30 rounded-bl" />
                   </div>
@@ -291,10 +307,10 @@ const DocIntelligenceMockup = () => {
 
                 {/* RIGHT SIDE: Metrics & Successful label */}
                 <div className="flex-1 flex flex-col justify-between gap-4 text-left w-full">
-                  
+
                   {/* Top row of four small stats cards */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    
+
                     {/* Stat 1: Line Items */}
                     <div className="bg-[#08080c]/80 border border-white/5 rounded-xl p-2 flex flex-col items-center justify-center text-center shadow-lg hover:border-purple-500/25 transition-all duration-300">
                       <div className="text-purple-400 mb-1 bg-purple-500/10 p-1.5 rounded-lg">
@@ -359,13 +375,261 @@ const DocIntelligenceMockup = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[8px] font-mono text-gray-500">
-          <div>EXTRACTOR: <span className="text-gray-300">BigLogicAI OCR v2</span></div>
-          <div>SPEED: <span className="text-orange-500 font-bold">0.8s / page</span></div>
-        </div>
       </div>
     </div>
+  );
+};// Mockup 4: AI Document Intelligence full pipeline visualizer dashboard (matches user mockup image with 100% high-fidelity accuracy)
+const PipelineDashboardOverlay = () => {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const isDark = theme === 'dark';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`absolute inset-0 z-50 flex flex-col p-6 sm:p-10 rounded-3xl border font-sans text-left overflow-y-auto transition-all duration-500 ${isDark ? 'bg-[#040406]/98 border-[#FF3B00]/25 shadow-[0_0_60px_rgba(255,59,0,0.12)] text-white' : 'bg-[#FCFCFD]/99 backdrop-blur-md border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.15)] text-slate-800'}`}
+    >
+      
+      {/* Mesh Glow Background */}
+      <div className={`absolute inset-0 pointer-events-none z-0 transition-opacity duration-500 ${isDark ? 'bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.04)_0%,transparent_70%)]' : 'bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.06)_0%,transparent_70%)]'}`} />
+
+      {/* Theme Toggle Button */}
+      <div className={`absolute top-6 right-6 z-30 flex items-center rounded-full p-1 text-[10px] font-mono font-black tracking-widest border transition-all duration-300 ${isDark ? 'bg-neutral-950/80 border-white/10 text-white' : 'bg-slate-100/90 border-slate-200 text-slate-800'}`}>
+        <button
+          onClick={() => setTheme('light')}
+          className={`px-3 py-1 rounded-full transition-all duration-300 uppercase ${!isDark ? 'bg-white text-[#FF3B00] shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : 'text-gray-500 hover:text-gray-300'}`}
+        >
+          Light
+        </button>
+        <button
+          onClick={() => setTheme('dark')}
+          className={`px-3 py-1 rounded-full transition-all duration-300 uppercase ${isDark ? 'bg-[#FF3B00] text-white shadow-[0_2px_8px_rgba(255,59,0,0.3)]' : 'text-slate-500 hover:text-slate-705'}`}
+        >
+          Dark
+        </button>
+      </div>
+
+      {/* Title Header Section */}
+      <div className="text-center mb-6 select-none relative z-10">
+        <h3 className="text-2xl sm:text-3xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500 flex items-center justify-center gap-2.5 leading-none">
+          AI Document Intelligence <span className={isDark ? 'text-amber-400 text-sm animate-pulse' : 'text-orange-500 text-sm animate-pulse'}>✦✦</span>
+        </h3>
+        
+        {/* Subtitle centered between orange thin lines */}
+        <div className={`flex items-center justify-center gap-4 mt-2 transition-colors duration-500 ${isDark ? 'text-white' : 'text-slate-800'}`}>
+          <div className="w-12 h-[1px] bg-[#FF3B00]/40" />
+          <p className="text-[10px] font-extrabold tracking-[0.25em] uppercase leading-none">
+            Understand. Extract. Validate. Automate.
+          </p>
+          <div className="w-12 h-[1px] bg-[#FF3B00]/40" />
+        </div>
+        
+        <p className={`text-[9.5px] mt-2 leading-relaxed font-semibold transition-colors duration-500 ${isDark ? 'text-gray-400' : 'text-slate-600'}`}>
+          Transform unstructured documents into intelligent data and automated workflows.
+        </p>
+      </div>
+
+      {/* 3-Column Core Grid */}
+      <div className="flex-1 grid grid-cols-12 gap-5 items-center min-h-0 relative z-10">
+
+        {/* Left Column: DOCUMENT INPUTS */}
+        <div className={`col-span-3 flex flex-col gap-2 h-full justify-between py-2 rounded-2xl p-3.5 shadow-2xl relative transition-all duration-500 ${isDark ? 'bg-black/45 border-white/5' : 'bg-slate-50/90 border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)]'}`}>
+          <div>
+            <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest leading-none">Document Inputs</div>
+            <div className={`text-[7.5px] font-mono mt-1 uppercase font-bold tracking-wider transition-colors duration-500 ${isDark ? 'text-gray-500' : 'text-slate-500'}`}>From anywhere. Any format.</div>
+          </div>
+          
+          <div className={`flex flex-col gap-1.5 text-[8.5px] transition-colors duration-500 ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
+            {[
+              { label: 'PDF Documents', icon: FileText, color: 'text-red-400 bg-red-500/10 border-red-500/20', colorLight: 'text-red-600 bg-red-500/5 border-red-200/60 hover:bg-red-500/10' },
+              { label: 'Images / Scans', icon: ImageIcon, color: 'text-orange-400 bg-orange-500/10 border-orange-500/20', colorLight: 'text-orange-600 bg-orange-500/5 border-orange-200/60 hover:bg-orange-500/10' },
+              { label: 'Word Files', icon: FileText, color: 'text-blue-400 bg-blue-500/10 border-blue-500/20', colorLight: 'text-blue-600 bg-blue-500/5 border-blue-200/60 hover:bg-blue-500/10' },
+              { label: 'Excel Files', icon: FileSpreadsheet, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', colorLight: 'text-emerald-600 bg-emerald-500/5 border-emerald-200/60 hover:bg-emerald-500/10' },
+              { label: 'Emails', icon: Mail, color: 'text-purple-400 bg-purple-500/10 border-purple-500/20', colorLight: 'text-purple-600 bg-purple-500/5 border-purple-200/60 hover:bg-purple-500/10' },
+              { label: 'Invoices', icon: Receipt, color: 'text-amber-400 bg-amber-500/10 border-amber-500/20', colorLight: 'text-amber-600 bg-amber-500/5 border-amber-200/60 hover:bg-amber-500/10' },
+              { label: 'Contracts', icon: FileText, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20', colorLight: 'text-indigo-600 bg-indigo-500/5 border-indigo-200/60 hover:bg-indigo-500/10' },
+              { label: 'Forms', icon: FileText, color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20', colorLight: 'text-yellow-600 bg-yellow-500/5 border-yellow-200/60 hover:bg-yellow-500/10' }
+            ].map((item, idx) => {
+              const ItemIcon = item.icon;
+              return (
+                <div key={idx} className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-2 font-bold leading-none shadow-sm transition-all duration-300 hover:scale-[1.02] cursor-pointer ${isDark ? item.color : item.colorLight}`}>
+                  <ItemIcon className="w-3.5 h-3.5 shrink-0" />
+                  <span>{item.label}</span>
+                </div>
+              );
+            })}
+            
+            {/* ... And More button to match image */}
+            <div className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-2 font-bold leading-none shadow-sm transition-all duration-300 hover:scale-[1.02] cursor-pointer ${isDark ? 'border-white/5 bg-neutral-900/50 text-gray-400' : 'border-slate-200 bg-white text-slate-500'}`}>
+              <span className="text-[10px] tracking-widest font-black">•••</span>
+              <span>And More...</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Center Column: Animated Central Processing Circle */}
+        <div className="col-span-6 flex flex-col items-center justify-between h-full py-2 relative">
+          
+          {/* Top workflow steps (OCR, Extract, Understand, Validate, Classify) */}
+          <div className="flex justify-between w-full px-1.5 gap-2 select-none relative z-10">
+            {[
+              { label: 'OCR Recognition', icon: Eye },
+              { label: 'Data Extraction', icon: Download },
+              { label: 'AI Understanding', icon: Brain },
+              { label: 'Data Validation', icon: Shield },
+              { label: 'Smart Classification', icon: Folder }
+            ].map((proc, idx) => {
+              const ProcIcon = proc.icon;
+              return (
+                <div key={idx} className="flex flex-col items-center group cursor-pointer">
+                  <div className={`w-7 h-7 rounded-xl border flex items-center justify-center text-orange-400 group-hover:text-amber-300 transition-all duration-300 ${isDark ? 'border-orange-500/25 bg-[#0d0d14] shadow-[0_0_10px_rgba(255,59,0,0.1)]' : 'border-orange-200 bg-white shadow-sm'}`}>
+                    <ProcIcon className="w-3.5 h-3.5" />
+                  </div>
+                  <span className={`text-[6.5px] font-extrabold font-mono mt-1.5 leading-none max-w-[50px] text-center transition-colors duration-500 ${isDark ? 'text-gray-500' : 'text-slate-500'}`}>{proc.label}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Central Animated circle with Document icon & Fiber-Optic glowing wave connections */}
+          <div className="relative w-36 h-36 flex items-center justify-center select-none my-3 shrink-0 z-10">
+            {/* Pulsing ring glows */}
+            <div className="absolute inset-0 rounded-full border border-orange-500/15 animate-ping opacity-35" />
+            <div className="absolute inset-2 rounded-full border border-orange-500/25 animate-pulse" />
+            <div className={`absolute inset-4 rounded-full pointer-events-none transition-all duration-500 ${isDark ? 'bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.06)_0%,transparent_70%)]' : 'bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.1)_0%,transparent_70%)]'}`} />
+
+            {/* Glowing electrical path svg representation */}
+            <svg className="absolute inset-0 w-full h-full animate-spin-slow pointer-events-none" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="44" stroke={isDark ? "url(#orangeGlowPathCardDark)" : "url(#orangeGlowPathCardLight)"} strokeWidth="1.5" strokeDasharray="40 50" fill="transparent" />
+              <defs>
+                <linearGradient id="orangeGlowPathCardDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FF3B00" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+                <linearGradient id="orangeGlowPathCardLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FF3B00" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Document sheet inside the glowing circle */}
+            <div className={`relative w-14 h-18 rounded-xl flex flex-col justify-between p-3.5 shadow-2xl transition-all duration-500 ${isDark ? 'bg-neutral-900 border border-white/10' : 'bg-white border border-slate-200/80 shadow-lg'}`}>
+              <div className={`w-6 h-0.5 rounded ${isDark ? 'bg-gray-500' : 'bg-slate-300'}`} />
+              <div className={`w-8 h-0.5 rounded ${isDark ? 'bg-gray-600' : 'bg-slate-400'}`} />
+              <div className={`w-5 h-0.5 rounded ${isDark ? 'bg-gray-600' : 'bg-slate-400'}`} />
+              {/* Orange AI stamp */}
+              <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-orange-500 text-[7px] font-black text-white scale-95 origin-bottom-right leading-none">
+                AI
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Pill */}
+          <div className={`px-4 py-1.5 rounded-full border text-[9px] font-bold text-center tracking-wider select-none relative z-10 transition-all duration-500 ${isDark ? 'border-[#FF3B00]/30 bg-orange-500/5 text-gray-300 shadow-[0_0_12px_rgba(255,59,0,0.05)]' : 'border-orange-200 bg-orange-50/50 text-slate-700 shadow-sm'}`}>
+            Intelligent Data. <span className="text-orange-500 font-extrabold animate-pulse">Actionable Results.</span>
+          </div>
+
+          {/* Glowing wire waves represented in background SVG */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+              {/* Left streams converging */}
+              <path d="M 20 60 C 80 60, 80 100, 110 100" fill="none" stroke="#FF3B00" strokeWidth="1.2" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.35]'}`} />
+              <path d="M 20 100 C 80 100, 80 100, 110 100" fill="none" stroke="#FF3B00" strokeWidth="1.5" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.3]' : 'opacity-[0.4]'}`} />
+              <path d="M 20 140 C 80 140, 80 100, 110 100" fill="none" stroke="#FF3B00" strokeWidth="1.2" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.35]'}`} />
+              
+              {/* Right streams diverging */}
+              <path d="M 190 100 C 220 100, 220 60, 280 60" fill="none" stroke="#FF3B00" strokeWidth="1.2" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.35]'}`} />
+              <path d="M 190 100 C 220 100, 220 100, 280 100" fill="none" stroke="#FF3B00" strokeWidth="1.5" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.3]' : 'opacity-[0.4]'}`} />
+              <path d="M 190 100 C 220 100, 220 140, 280 140" fill="none" stroke="#FF3B00" strokeWidth="1.2" className={`transition-opacity duration-500 ${isDark ? 'opacity-[0.25]' : 'opacity-[0.35]'}`} />
+            </svg>
+          </div>
+
+        </div>
+
+        {/* Right Column: EXTRACTED INSIGHTS */}
+        <div className={`col-span-3 flex flex-col gap-2.5 h-full justify-between py-2 rounded-2xl p-3.5 shadow-2xl relative transition-all duration-500 ${isDark ? 'bg-black/45 border-white/5' : 'bg-slate-50/90 border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)]'}`}>
+          <div>
+            <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest leading-none">Extracted Insights</div>
+            <div className={`text-[7.5px] font-mono mt-1 uppercase font-bold tracking-wider transition-colors duration-500 ${isDark ? 'text-gray-500' : 'text-slate-500'}`}>Structured. Accurate. Ready to use.</div>
+          </div>
+          
+          <div className="flex flex-col gap-1.5 text-[8px]">
+            {[
+              { key: 'Invoice Number', val: 'INV-2024-0429', icon: FileText, color: 'text-purple-400 bg-purple-500/10 border-purple-500/25', colorLight: 'text-purple-600 bg-purple-500/5 border-purple-200/60 hover:bg-purple-500/10' },
+              { key: 'Total Amount', val: '$2,200.00', icon: Coins, color: 'text-orange-400 bg-orange-500/10 border-orange-500/25', colorLight: 'text-orange-600 bg-orange-500/5 border-orange-200/60 hover:bg-orange-500/10' },
+              { key: 'Invoice Date', val: 'May 20, 2024', icon: Clock, color: 'text-blue-400 bg-blue-500/10 border-blue-500/25', colorLight: 'text-blue-600 bg-blue-500/5 border-blue-200/60 hover:bg-blue-500/10' },
+              { key: 'Vendor Name', val: 'ABC Restoration', icon: User, color: 'text-pink-400 bg-pink-500/10 border-pink-500/25', colorLight: 'text-pink-600 bg-pink-500/5 border-pink-200/60 hover:bg-pink-500/10' },
+              { key: 'Due Date', val: 'June 20, 2024', icon: Clock, color: 'text-amber-400 bg-amber-500/10 border-amber-500/25', colorLight: 'text-amber-600 bg-amber-500/5 border-amber-200/60 hover:bg-amber-500/10' },
+              { key: 'PO Number', val: 'PO-5587', icon: Package, color: 'text-indigo-400 bg-[#FF3B00]/10 border-indigo-500/25', colorLight: 'text-indigo-600 bg-indigo-500/5 border-indigo-200/60 hover:bg-indigo-500/10' }
+            ].map((item, idx) => {
+              const ItemIcon = item.icon;
+              return (
+                <div key={idx} className={`border rounded-xl px-3 py-1.5 flex items-center justify-between gap-2 shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer ${isDark ? 'bg-neutral-950/80 border-white/5' : 'bg-white border-slate-200'}`}>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className={`p-1.5 rounded-lg border shrink-0 ${isDark ? item.color : item.colorLight}`}>
+                      <ItemIcon className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="min-w-0 text-left">
+                      <div className={`text-[6.5px] font-black uppercase leading-none tracking-wider transition-colors duration-500 ${isDark ? 'text-gray-500' : 'text-slate-500'}`}>{item.key}</div>
+                      <div className={`text-[8.5px] font-extrabold leading-none mt-1 truncate max-w-[85px] transition-colors duration-500 ${isDark ? 'text-white' : 'text-slate-800'}`}>{item.val}</div>
+                    </div>
+                  </div>
+                  <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_6px_rgba(16,185,129,0.15)] ${isDark ? 'bg-emerald-500/10 border border-emerald-500/40 text-emerald-400' : 'bg-emerald-500/5 border border-emerald-500/30 text-emerald-600'}`}>
+                    <Check className="w-2.5 h-2.5 font-bold" strokeWidth={4} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <button className={`w-full py-2 rounded-xl border font-extrabold text-[8px] tracking-widest uppercase shadow-md flex items-center justify-center gap-1.5 select-none transition-all duration-300 cursor-pointer ${isDark ? 'border-orange-500/35 bg-orange-500/5 hover:bg-orange-500 hover:text-black text-orange-400' : 'border-[#FF3B00] bg-[#FF3B00] text-white hover:bg-orange-600 hover:border-orange-600 shadow-sm'}`}>
+            <Download className="w-3.5 h-3.5" />
+            <span>Export Data</span>
+          </button>
+        </div>
+
+      </div>
+
+      {/* Bottom Highlights Row */}
+      <div className={`grid grid-cols-5 gap-3 border-t pt-4 mt-3 select-none transition-colors duration-500 ${isDark ? 'border-white/5' : 'border-slate-200/80'}`}>
+        {[
+          { title: 'Extract Data Instantly', desc: 'Capture data from any document in seconds.', icon: Zap, color: 'text-orange-400 bg-orange-500/10 border-orange-500/20', colorLight: 'text-orange-600 bg-orange-500/5 border-orange-200/60' },
+          { title: 'Reduce Manual Work', desc: 'Eliminate repetitive tasks and human errors.', icon: User, color: 'text-pink-400 bg-pink-500/10 border-pink-500/20', colorLight: 'text-pink-600 bg-pink-500/5 border-pink-200/60' },
+          { title: 'Improve Accuracy & Compliance', desc: 'Ensure data is accurate, consistent and audit-ready.', icon: Shield, color: 'text-blue-400 bg-blue-500/10 border-blue-500/20', colorLight: 'text-blue-600 bg-blue-500/5 border-blue-200/60' },
+          { title: 'Save Time & Costs', desc: 'Automate workflows and boost team productivity.', icon: Clock, color: 'text-purple-400 bg-purple-500/10 border-purple-500/20', colorLight: 'text-purple-600 bg-purple-500/5 border-purple-200/60' },
+          { title: 'Make Smarter Decisions', desc: 'Get actionable insights from your data.', icon: Brain, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', colorLight: 'text-emerald-600 bg-emerald-500/5 border-emerald-200/60' }
+        ].map((hl, idx) => {
+          const HlIcon = hl.icon;
+          return (
+            <div key={idx} className={`border rounded-xl p-2.5 flex flex-col gap-1 text-left transition-all duration-500 ${isDark ? 'bg-neutral-950/40 border-white/5' : 'bg-slate-50 border-slate-200/80 shadow-sm'}`}>
+              <div className="flex items-center gap-1.5">
+                <div className={`p-1 rounded border shrink-0 ${isDark ? hl.color : hl.colorLight}`}>
+                  <HlIcon className="w-3.5 h-3.5" />
+                </div>
+                <div className={`text-[7.5px] font-bold uppercase tracking-wider leading-none transition-colors duration-500 ${isDark ? 'text-white' : 'text-slate-800'}`}>{hl.title}</div>
+              </div>
+              <p className={`text-[6.5px] leading-normal mt-1 transition-colors duration-500 ${isDark ? 'text-gray-500' : 'text-slate-500'}`}>{hl.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer Metrics / Compliance */}
+      <div className={`border-t pt-3.5 mt-3 flex justify-between items-center text-[7.5px] font-mono select-none font-bold transition-all duration-500 ${isDark ? 'border-white/5 text-gray-500' : 'border-slate-200/80 text-slate-500'}`}>
+        <div className="flex gap-4 uppercase tracking-wider items-center">
+          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-[#FF3B00]" /> SOC 2 Compliant</span>
+          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-[#FF3B00]" /> GDPR Compliant</span>
+          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-[#FF3B00]" /> HIPAA Ready</span>
+          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-[#FF3B00]" /> 256-bit Encryption</span>
+        </div>
+        <span className="text-[#FF3B00] font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B00] animate-pulse" /> Secure. Reliable. Enterprise Ready.
+        </span>
+      </div>
+    </motion.div>
   );
 };
 
@@ -621,7 +885,7 @@ const TABS = [
       'Smart document search'
     ],
     color: 'text-orange-500',
-    mockup: <DocIntelligenceMockup />
+    mockup: <div />
   },
   {
     id: 'workflow-automation',
@@ -675,6 +939,8 @@ const TABS = [
 
 const Showcase = () => {
   const [activeTab, setActiveTab] = useState(TABS[0].id);
+  const [docStep, setDocStep] = useState(0);
+  const [docProgress, setDocProgress] = useState(0);
 
   // Stagger variants for the left tabs list
   const tabsListVariants = {
@@ -866,8 +1132,22 @@ const Showcase = () => {
                 >
                   {/* Laser sweep shine effect */}
                   <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1000ms] ease-out pointer-events-none z-30" />
-                  {tab.mockup}
+                  {tab.id === 'doc-intelligence' ? (
+                    <DocIntelligenceMockup
+                      step={docStep}
+                      setStep={setDocStep}
+                      progress={docProgress}
+                      setProgress={setDocProgress}
+                    />
+                  ) : tab.mockup}
                 </motion.div>
+
+                {/* Full-Cover Pipeline Dashboard Overlay at Card level */}
+                <AnimatePresence>
+                  {tab.id === 'doc-intelligence' && docStep === 3 && (
+                    <PipelineDashboardOverlay key="card-pipeline-dashboard" />
+                  )}
+                </AnimatePresence>
               </motion.div>
             </div>
           ))}

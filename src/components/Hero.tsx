@@ -174,16 +174,16 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute right-[3%] top-[12%] z-10 hidden xl:flex items-center gap-3.5 p-3 rounded-2xl bg-[#08080c]/60 border border-white/5 backdrop-blur-md shadow-2xl"
+        className="absolute right-[3%] top-[12%] z-10 hidden lg:flex items-center gap-4 p-4 rounded-2xl bg-[#08080c]/75 border border-white/10 backdrop-blur-md shadow-2xl"
       >
-        <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
-          <Activity className="w-4.5 h-4.5" />
+        <div className="w-9 h-9 rounded-lg bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.2)]">
+          <Activity className="w-5 h-5" />
         </div>
         <div className="text-left font-sans">
-          <div className="text-[10px] font-mono font-black text-orange-400 tracking-wider">24/7 ACTIVE COPILOT</div>
-          <div className="text-[8px] text-gray-500 font-medium">Outbound tasks queued</div>
+          <div className="text-xs font-mono font-bold text-orange-400 tracking-wider">24/7 ACTIVE COPILOT</div>
+          <div className="text-[10px] sm:text-xs text-gray-400 font-semibold mt-0.5">Outbound tasks queued</div>
         </div>
-        <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-orange-400 border-2 border-black" />
+        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-orange-400 border-2 border-black animate-pulse" />
       </motion.div>
 
       {/* FOMO Card 4: Mid-Right Lower */}
@@ -191,14 +191,14 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute right-[4%] top-[72%] z-10 hidden xl:flex items-center gap-3.5 p-3 rounded-2xl bg-[#08080c]/60 border border-white/5 backdrop-blur-md shadow-2xl"
+        className="absolute right-[4%] top-[72%] z-10 hidden lg:flex items-center gap-4 p-4 rounded-2xl bg-[#08080c]/75 border border-white/10 backdrop-blur-md shadow-2xl"
       >
-        <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-          <DollarSign className="w-4.5 h-4.5" />
+        <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.2)]">
+          <DollarSign className="w-5 h-5" />
         </div>
         <div className="text-left font-sans">
-          <div className="text-[10px] font-mono font-black text-cyan-400 tracking-wider">-$9,420 DEV COSTS</div>
-          <div className="text-[8px] text-gray-500 font-medium">Infrastructure savings</div>
+          <div className="text-xs font-mono font-bold text-cyan-400 tracking-wider">-$9,420 DEV COSTS</div>
+          <div className="text-[10px] sm:text-xs text-gray-400 font-semibold mt-0.5">Infrastructure savings</div>
         </div>
       </motion.div>
 
@@ -334,19 +334,19 @@ const Hero = () => {
               <div className="flex-1 grid grid-cols-1 sm:grid-cols-12 overflow-hidden relative">
 
                 {/* Left Column: Interactive Chat & Live AI Terminal */}
-                <div className="sm:col-span-5 border-r border-white/5 flex flex-col justify-between p-4 bg-[#0a0a0f]/40 relative overflow-y-auto">
+                <div className="sm:col-span-6 border-r border-white/5 flex flex-col justify-between p-5 bg-[#0a0a0f]/40 relative overflow-y-auto">
 
-                  <div className="space-y-4">
+                  <div className="space-y-5">
 
                     {/* Chat: User Input */}
-                    <div className="space-y-1">
-                      <div className="text-[9px] font-mono font-bold text-gray-500 uppercase tracking-wider">RECON ENGINE</div>
-                      <div className="bg-white text-neutral-900 p-2.5 rounded-xl rounded-tl-none font-sans text-[11px] font-semibold leading-relaxed shadow-lg border border-neutral-100 flex items-start gap-2 relative group hover:scale-[1.01] transition-transform">
-                        <Zap className="w-3.5 h-3.5 text-[#FF3B00] shrink-0 mt-0.5" />
+                    <div className="space-y-1.5">
+                      <div className="text-[10px] sm:text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">RECON ENGINE</div>
+                      <div className="bg-white text-neutral-900 p-3 rounded-xl rounded-tl-none font-sans text-xs sm:text-[13px] font-semibold leading-relaxed shadow-lg border border-neutral-100 flex items-start gap-2.5 relative group hover:scale-[1.01] transition-transform">
+                        <Zap className="w-4 h-4 text-[#FF3B00] shrink-0 mt-0.5" />
                         <div>
                           {typedPrompt}
                           {demoStep === 0 && typedPrompt.length < fullPrompt.length && (
-                            <span className="w-1 h-3 bg-orange-600 animate-pulse inline-block ml-0.5 align-middle" />
+                            <span className="w-1.5 h-3.5 bg-orange-600 animate-pulse inline-block ml-0.5 align-middle" />
                           )}
                         </div>
                       </div>
@@ -358,30 +358,30 @@ const Hero = () => {
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="space-y-1.5"
+                          className="space-y-2"
                         >
-                          <div className="text-[9px] font-mono font-bold text-gray-500 uppercase tracking-wider flex items-center justify-between">
+                          <div className="text-[10px] sm:text-xs font-mono font-bold text-gray-400 uppercase tracking-wider flex items-center justify-between">
                             <span>OPERATING LOGS</span>
-                            <span className="text-orange-400 font-bold bg-orange-400/5 border border-orange-400/10 px-1 py-0.5 rounded text-[8px]">ACTIVE</span>
+                            <span className="text-orange-400 font-bold bg-orange-400/5 border border-orange-400/10 px-2 py-0.5 rounded text-[9px]">ACTIVE</span>
                           </div>
 
-                          <div className="bg-neutral-950 border border-neutral-900 p-3 rounded-xl font-mono text-[9px] sm:text-[10px] text-neutral-300 leading-normal shadow-xl relative overflow-visible flex flex-col justify-start border-t-white/5">
+                          <div className="bg-neutral-950 border border-neutral-900 p-4 rounded-xl font-mono text-xs sm:text-[13px] text-neutral-100 leading-relaxed shadow-xl relative overflow-visible flex flex-col justify-start border-t-white/5 min-h-[160px]">
                             <div className="absolute inset-0 bg-gradient-to-b from-[#FF3B00]/[0.01] to-transparent pointer-events-none" />
 
-                            <div className="space-y-1 select-text pr-1 flex-1">
+                            <div className="space-y-1.5 select-text pr-1 flex-1">
                               {terminalLines.map((line, idx) => (
                                 <motion.div
                                   key={idx}
                                   initial={{ opacity: 0, x: -5 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ duration: 0.15 }}
-                                  className={line.startsWith("✓") ? "text-emerald-400 font-medium" : "text-gray-300"}
+                                  className={line.startsWith("✓") ? "text-emerald-400 font-semibold" : "text-neutral-100 font-medium"}
                                 >
                                   {line}
                                 </motion.div>
                               ))}
                               {demoStep === 1 && terminalLines.length < logList.length && (
-                                <span className="w-1.5 h-3 bg-[#FF3B00]/80 animate-pulse inline-block align-middle ml-1" />
+                                <span className="w-1.5 h-3.5 bg-[#FF3B00]/80 animate-pulse inline-block align-middle ml-1" />
                               )}
                             </div>
                           </div>
@@ -392,15 +392,15 @@ const Hero = () => {
                   </div>
 
                   {/* Bot Info Deck */}
-                  <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-[8px] font-mono text-gray-500 select-none">
-                    <div>COPILOT: <span className="text-gray-300">@biglogic agent</span></div>
-                    <div>SPEED: <span className="text-[#FF3B00] font-bold">10X</span></div>
+                  <div className="pt-3.5 mt-3.5 border-t border-white/5 flex items-center justify-between text-[10px] sm:text-xs font-mono text-gray-400 select-none">
+                    <div>COPILOT: <span className="text-gray-200 font-medium">@biglogic agent</span></div>
+                    <div>SPEED: <span className="text-[#FF3B00] font-black">10X</span></div>
                   </div>
 
                 </div>
 
                 {/* Right Column: Visual Campaign Workflow Node Graph */}
-                <div className="sm:col-span-7 bg-[#020204]/60 p-4 flex flex-col items-center justify-center relative overflow-hidden">
+                <div className="sm:col-span-6 bg-[#020204]/60 p-4 flex flex-col items-center justify-center relative overflow-hidden">
 
                   {/* Radial backdrop */}
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.03),transparent_70%)] pointer-events-none" />
@@ -466,8 +466,8 @@ const Hero = () => {
                         >
                           <FileText className="w-4.5 h-4.5" />
                         </div>
-                        <div className="text-[8px] font-bold uppercase tracking-wider text-gray-400">Intake</div>
-                        <div className="text-[7px] font-mono text-gray-600">Xactimate PDF</div>
+                        <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-300">Intake</div>
+                        <div className="text-[9px] sm:text-[10px] font-mono text-gray-500">Xactimate PDF</div>
                       </div>
 
                       {/* Node 2: SLA Carrier Audit Check */}
@@ -482,8 +482,8 @@ const Hero = () => {
                         >
                           <ClipboardCheck className="w-5 h-5" />
                         </div>
-                        <div className="text-[8px] font-bold uppercase tracking-wider text-gray-400">Compliance</div>
-                        <div className="text-[7px] font-mono text-gray-600">Carrier SLA</div>
+                        <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-300">Compliance</div>
+                        <div className="text-[9px] sm:text-[10px] font-mono text-gray-500">Carrier SLA</div>
                       </div>
 
                       {/* Node 3: Tech Dispatch and SMS alerts */}
@@ -496,8 +496,8 @@ const Hero = () => {
                         >
                           <Bell className="w-4.5 h-4.5" />
                         </div>
-                        <div className="text-[8px] font-bold uppercase tracking-wider text-gray-400">Dispatch</div>
-                        <div className="text-[7px] font-mono text-gray-600">Slack & SMS</div>
+                        <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-300">Dispatch</div>
+                        <div className="text-[9px] sm:text-[10px] font-mono text-gray-500">Slack & SMS</div>
                       </div>
 
                     </div>
@@ -512,20 +512,20 @@ const Hero = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.97, y: 16 }}
                         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute inset-3 z-20 bg-[#08090f]/97 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
+                        className="absolute inset-2 z-20 bg-[#08090f]/98 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
                       >
                         {/* Card Header */}
-                        <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between bg-emerald-500/[0.04]">
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                              <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                        <div className="px-4 py-3.5 border-b border-white/5 flex items-center justify-between bg-emerald-500/[0.04]">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                              <Check className="w-4 h-4" strokeWidth={3} />
                             </div>
                             <div>
-                              <div className="text-[11px] font-black text-white tracking-tight">Restoration Dispatch Ready!</div>
-                              <div className="text-[8px] text-emerald-400 font-semibold">All systems verified · AI audit passed</div>
+                              <div className="text-xs sm:text-sm font-black text-white tracking-tight">Restoration Dispatch Ready!</div>
+                              <div className="text-[10px] sm:text-xs text-emerald-400 font-semibold mt-0.5">All systems verified · AI audit passed</div>
                             </div>
                           </div>
-                          <div className="text-[8px] font-mono font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">LIVE</div>
+                          <div className="text-[10px] sm:text-xs font-mono font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-0.5 rounded-full">LIVE</div>
                         </div>
 
                         {/* Stats Row */}
@@ -536,63 +536,71 @@ const Hero = () => {
                             { label: "SLA", value: "Passed", color: "text-emerald-400" },
                             { label: "Crew", value: "Alpha", color: "text-purple-400" },
                           ].map((s, i) => (
-                            <div key={i} className="flex flex-col items-center py-2.5 border-r border-white/5 last:border-r-0">
-                              <div className={`text-[11px] font-black ${s.color}`}>{s.value}</div>
-                              <div className="text-[7px] font-mono text-gray-600 uppercase tracking-wider mt-0.5">{s.label}</div>
+                            <div key={i} className="flex flex-col items-center py-3 border-r border-white/5 last:border-r-0">
+                              <div className={`text-xs sm:text-sm font-black ${s.color}`}>{s.value}</div>
+                              <div className="text-[9px] sm:text-[10px] font-mono text-gray-500 uppercase tracking-wider mt-1">{s.label}</div>
                             </div>
                           ))}
                         </div>
 
                         {/* Details Grid */}
-                        <div className="flex-1 p-3 grid grid-cols-2 gap-2 overflow-hidden">
+                        <div className="flex-1 p-3.5 grid grid-cols-2 gap-3 overflow-hidden">
                           {/* Property */}
-                          <div className="col-span-2 bg-white/[0.02] border border-white/5 rounded-xl p-2.5 flex items-start gap-2">
-                            <div className="w-5 h-5 rounded-lg bg-[#FF3B00]/10 border border-[#FF3B00]/20 flex items-center justify-center shrink-0 mt-0.5">
-                              <FileText className="w-2.5 h-2.5 text-[#FF3B00]" />
+                          <div className="col-span-2 bg-white/[0.02] border border-white/5 rounded-xl p-3 flex items-start gap-3">
+                            <div className="w-6 h-6 rounded-lg bg-[#FF3B00]/10 border border-[#FF3B00]/20 flex items-center justify-center shrink-0 mt-0.5">
+                              <FileText className="w-3.5 h-3.5 text-[#FF3B00]" />
                             </div>
                             <div className="min-w-0">
-                              <div className="text-[8px] font-bold text-gray-500 uppercase tracking-wider">Property</div>
-                              <div className="text-[10px] font-bold text-white mt-0.5">452 Maple Ave — Xactimate Parsed</div>
-                              <div className="text-[8px] text-gray-500 font-mono mt-0.5 truncate">Line items: 47 · Total: $28,400 · Carrier: State Farm</div>
+                              <div className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-wider">Property</div>
+                              <div className="text-xs sm:text-sm font-bold text-white mt-0.5">452 Maple Ave — Xactimate Parsed</div>
+                              <div className="text-[10px] sm:text-xs text-gray-500 font-mono mt-0.5 truncate">Line items: 47 · Total: $28,400 · Carrier: State Farm</div>
                             </div>
                           </div>
 
                           {/* Crew Dispatch */}
-                          <div className="bg-white/[0.02] border border-white/5 rounded-xl p-2.5">
-                            <div className="text-[8px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Crew Dispatch</div>
-                            <div className="flex items-center gap-1.5 mb-1">
-                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                              <span className="text-[9px] font-bold text-white">Team Alpha · En Route</span>
+                          <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 flex flex-col justify-between">
+                            <div>
+                              <div className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Crew Dispatch</div>
+                              <div className="flex items-center gap-1.5 mb-1">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                                <span className="text-[10px] sm:text-xs font-bold text-white">Team Alpha · En Route</span>
+                              </div>
                             </div>
-                            <div className="text-[7px] font-mono text-gray-600">ETA: 18 min · 3 techs</div>
-                            <div className="text-[7px] font-mono text-gray-600 mt-0.5">SMS + App notified ✓</div>
+                            <div className="text-[9px] sm:text-[10px] font-mono text-gray-500 mt-1">
+                              <div>ETA: 18 min · 3 techs</div>
+                              <div className="text-emerald-400 font-semibold mt-0.5">SMS + App notified ✓</div>
+                            </div>
                           </div>
 
                           {/* Billing */}
-                          <div className="bg-white/[0.02] border border-white/5 rounded-xl p-2.5">
-                            <div className="text-[8px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Billing Pack</div>
-                            <div className="text-[9px] font-bold text-emerald-400 mb-1">Auto-compiled</div>
-                            <div className="text-[7px] font-mono text-gray-600">Proof of loss · Photo board</div>
-                            <div className="text-[7px] font-mono text-gray-600 mt-0.5">Dry logs · e-Signature ✓</div>
+                          <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 flex flex-col justify-between">
+                            <div>
+                              <div className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Billing Pack</div>
+                              <div className="text-[10px] sm:text-xs font-bold text-emerald-400 mb-1">Auto-compiled</div>
+                            </div>
+                            <div className="text-[9px] sm:text-[10px] font-mono text-gray-500 mt-1">
+                              <div>Proof of loss · Photo board</div>
+                              <div className="text-emerald-400 font-semibold mt-0.5">Dry logs · e-Signature ✓</div>
+                            </div>
                           </div>
 
                           {/* Compliance */}
-                          <div className="col-span-2 bg-white/[0.02] border border-white/5 rounded-xl p-2.5 flex items-center gap-2">
-                            <div className="w-5 h-5 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0">
-                              <ClipboardCheck className="w-2.5 h-2.5 text-purple-400" />
+                          <div className="col-span-2 bg-white/[0.02] border border-white/5 rounded-xl p-3 flex items-center gap-3">
+                            <div className="w-6 h-6 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0">
+                              <ClipboardCheck className="w-3.5 h-3.5 text-purple-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="text-[8px] font-bold text-gray-500 uppercase tracking-wider">Compliance Audit</div>
-                              <div className="text-[9px] font-bold text-white mt-0.5">State Farm SLA · Zero violations · Dehumidifier runtime corrected</div>
+                              <div className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-wider">Compliance Audit</div>
+                              <div className="text-[10px] sm:text-xs font-bold text-white mt-0.5">State Farm SLA · Zero violations · Dehumidifier runtime corrected</div>
                             </div>
-                            <div className="text-[8px] font-mono font-black text-emerald-400 shrink-0">100%</div>
+                            <div className="text-[10px] sm:text-xs font-mono font-black text-emerald-400 shrink-0 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">100%</div>
                           </div>
                         </div>
 
                         {/* Footer */}
-                        <div className="px-3 py-2 border-t border-white/5 flex items-center justify-between">
-                          <div className="text-[7px] font-mono text-gray-600">biglogic-operating-system · claim_intake_8f4</div>
-                          <div className="text-[7px] font-mono text-[#FF3B00] font-bold">POWERED BY BIGLOGIC AI</div>
+                        <div className="px-4 py-2.5 border-t border-white/5 flex items-center justify-between bg-black/[0.15]">
+                          <div className="text-[9px] sm:text-[10px] font-mono text-gray-500">biglogic-operating-system · claim_intake_8f4</div>
+                          <div className="text-[9px] sm:text-[10px] font-mono text-[#FF3B00] font-black tracking-wider">POWERED BY BIGLOGIC AI</div>
                         </div>
                       </motion.div>
                     )}

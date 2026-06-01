@@ -20,11 +20,9 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (theme === 'light') {
-      document.documentElement.classList.add('light');
-    } else {
-      document.documentElement.classList.remove('light');
-    }
+    document.documentElement.classList.toggle('light', theme === 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
 

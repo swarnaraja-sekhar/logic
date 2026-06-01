@@ -1,15 +1,3 @@
-import { useState, useEffect } from 'react';
-import { 
-  Search, 
-  Terminal, 
-  Check, 
-  Folder, 
-  ChevronRight, 
-  Sparkles,
-  AlertTriangle,
-  RefreshCw,
-  Volume2
-} from 'lucide-react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 
 const GlowCardInner = ({ 
@@ -57,31 +45,6 @@ const GlowCardInner = ({
 };
 
 export const FeaturesGrid = () => {
-  const [pulse, setPulse] = useState(true);
-  const [estimateProgress, setEstimateProgress] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPulse((prev) => !prev);
-    }, 1500);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Cycle estimate parsing state
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setEstimateProgress((p) => {
-        if (p >= 100) {
-          setTimeout(() => {
-            setEstimateProgress(0);
-          }, 2000);
-          return 100;
-        }
-        return p + 20;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Stagger entrance variants for grids
   const gridVariants = {
@@ -138,65 +101,13 @@ export const FeaturesGrid = () => {
               {/* Premium Laser Sweep shine effect */}
               <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-30" />
 
-              {/* Workspace Comparison Window */}
+              {/* Workspace Comparison Window / Infographic Image */}
               <GlowCardInner className="w-[95%] h-[95%]">
-                {/* Search Header Bar */}
-                <div className="px-4 py-2.5 bg-[#0c0c12] border-b border-white/5 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 select-none">
-                    <div className="w-2 h-2 rounded-full bg-red-500/60" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
-                    <div className="w-2 h-2 rounded-full bg-green-500/60" />
-                  </div>
-                  <span className="text-[9px] font-mono text-gray-500">legacy-tools vs biglogicai</span>
-                  <div className="w-8 h-2 rounded-full bg-white/5" />
-                </div>
-
-                {/* Split Panel Comparison Layout */}
-                <div className="flex-1 grid grid-cols-2 gap-px bg-white/5 overflow-hidden">
-                  
-                  {/* Left Side: Old Legacy Software */}
-                  <div className="bg-[#0c0c12]/95 p-3 flex flex-col justify-between text-left">
-                    <div>
-                      <div className="flex items-center gap-1 text-[8px] font-mono text-rose-500 font-bold bg-rose-500/10 px-1.5 py-0.5 rounded border border-rose-500/20 w-fit mb-2">
-                        <AlertTriangle className="w-2.5 h-2.5" /> LEGACY SOFTWARE
-                      </div>
-                      <div className="text-[10px] font-bold text-gray-400 mb-2">Slow & Cryptic Interface</div>
-                      <div className="space-y-1.5 text-[8px] text-gray-600 font-mono">
-                        <div className="border border-red-500/10 p-1 rounded bg-red-500/[0.02]">✕ Loading time: 24.2s</div>
-                        <div className="border border-red-500/10 p-1 rounded bg-red-500/[0.02]">✕ Cryptic manual inputs</div>
-                        <div className="border border-red-500/10 p-1 rounded bg-red-500/[0.02]">✕ No AI extraction</div>
-                        <div className="border border-red-500/10 p-1 rounded bg-red-500/[0.02]">✕ Desktop-bound app</div>
-                      </div>
-                    </div>
-                    <span className="text-[7px] text-gray-700 font-mono">Status: Frustrating & inefficient</span>
-                  </div>
-
-                  {/* Right Side: BigLogicAI Modern Interface */}
-                  <div className="bg-[#08080c]/90 p-3 flex flex-col justify-between text-left">
-                    <div>
-                      <div className="flex items-center gap-1 text-[8px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20 w-fit mb-2">
-                        <Sparkles className="w-2.5 h-2.5 text-emerald-400" /> BIGLOGICAI HUB
-                      </div>
-                      <div className="text-[10px] font-bold text-white mb-2">Modern AI-Powered OS</div>
-                      <div className="space-y-1.5 text-[8px] text-emerald-400/80 font-mono">
-                        <div className="border border-emerald-500/10 p-1 rounded bg-emerald-500/[0.02] flex items-center gap-1">
-                          <Check className="w-2.5 h-2.5" /> Instant response (0.2s)
-                        </div>
-                        <div className="border border-emerald-500/10 p-1 rounded bg-emerald-500/[0.02] flex items-center gap-1">
-                          <Check className="w-2.5 h-2.5" /> Automated workflows
-                        </div>
-                        <div className="border border-emerald-500/10 p-1 rounded bg-emerald-500/[0.02] flex items-center gap-1">
-                          <Check className="w-2.5 h-2.5" /> Multi-device responsive
-                        </div>
-                        <div className="border border-emerald-500/10 p-1 rounded bg-emerald-500/[0.02] flex items-center gap-1">
-                          <Check className="w-2.5 h-2.5" /> Natural AI chat search
-                        </div>
-                      </div>
-                    </div>
-                    <span className="text-[7px] text-emerald-500 font-mono font-bold">Status: Smooth & scaling native</span>
-                  </div>
-
-                </div>
+                <img 
+                  src="/outdated_reconstruction_workflow.jpg" 
+                  alt="Outdated Reconstruction Software Diagram" 
+                  className="w-full h-full object-cover sm:object-contain transition-transform duration-700 hover:scale-[1.01]"
+                />
               </GlowCardInner>
             </div>
             
@@ -222,52 +133,13 @@ export const FeaturesGrid = () => {
               {/* Premium Laser Sweep shine effect */}
               <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-30" />
 
-              {/* Floating Editor View Workspace */}
+              {/* Floating Editor View Workspace / Infographic Image */}
               <GlowCardInner className="w-[95%] h-[95%]">
-                
-                {/* Editor Header */}
-                <div className="h-10 bg-[#0c0c12] border-b border-white/5 px-4 flex items-center justify-between text-[9px] font-mono text-gray-500 select-none">
-                  <div className="flex items-center gap-1.5">
-                    <Terminal className="w-3 h-3 text-orange-500" />
-                    <span>biglogic-parser // estimate-intake-processor</span>
-                  </div>
-                  <span className="px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 font-bold border border-orange-500/20">ESTIMATE PARSED</span>
-                </div>
-
-                {/* Estimate scanning preview and outputs */}
-                <div className="flex-1 p-4 font-mono text-[9px] sm:text-[10px] leading-relaxed text-gray-500 space-y-2.5 relative text-left">
-                  
-                  {/* Parsing progressive scanner */}
-                  <div className="bg-white/[0.01] border border-white/5 rounded-xl p-3 space-y-2 relative overflow-hidden">
-                    <div className="flex items-center justify-between text-xs text-white">
-                      <span className="font-semibold">Maple_Ave_Estimate.pdf</span>
-                      <span className="text-[#FF3B00] font-bold">{estimateProgress}%</span>
-                    </div>
-                    
-                    <div className="w-full bg-neutral-900 h-1.5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#FF3B00] transition-all duration-300" style={{ width: `${estimateProgress}%` }} />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1">
-                    <div className={estimateProgress >= 20 ? "text-orange-400/90 font-medium" : "text-gray-700"}>
-                      {estimateProgress >= 20 ? "✓ PDF Reading: File structure scanned successfully" : "▶ Reading estimate PDF..."}
-                    </div>
-                    <div className={estimateProgress >= 60 ? "text-orange-400/90 font-medium" : "text-gray-700"}>
-                      {estimateProgress >= 60 ? "✓ Xactimate Parsing: 47 line items mapped automatically" : "▶ Parsing Xactimate estimates..."}
-                    </div>
-                    <div className={estimateProgress >= 100 ? "text-orange-400/90 font-medium" : "text-gray-700"}>
-                      {estimateProgress >= 100 ? "✓ Schedule Gen: 4 draw milestones generated" : "▶ Generating schedules..."}
-                    </div>
-                  </div>
-
-                  <div className="text-[8px] text-gray-600 border-t border-white/5 pt-2 flex justify-between select-none font-bold">
-                    <span>Target: 452 Maple Ave Restoration</span>
-                    <span className="text-[#FF3B00] uppercase tracking-wider">Saved 4.5 hours of typing</span>
-                  </div>
-
-                </div>
-
+                <img 
+                  src="/manual_estimate_workflow.jpg" 
+                  alt="Manual Estimate Processing Flow" 
+                  className="w-full h-full object-cover sm:object-contain transition-transform duration-700 hover:scale-[1.01]"
+                />
               </GlowCardInner>
             </div>
             
@@ -304,36 +176,13 @@ export const FeaturesGrid = () => {
               {/* Premium Laser Sweep shine effect */}
               <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-30" />
 
-              {/* Compliance Checker Board */}
-              <GlowCardInner className="w-[95%] h-[95%] p-4 gap-3 text-left">
-                <div className="flex items-center justify-between border-b border-white/5 pb-2 text-white select-none">
-                  <span className="text-[9px] font-bold tracking-widest font-mono text-gray-400 flex items-center gap-1 uppercase">
-                    <RefreshCw className="w-3.5 h-3.5 text-purple-400 animate-spin-slow" /> CARRIER COMPLIANCE AUDIT
-                  </span>
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                </div>
-
-                <div className="flex-1 flex flex-col justify-between py-1">
-                  <div className="space-y-2">
-                    {[
-                      { label: "Document validation", detail: "Dry logs, photos, e-signs checked", status: "Passed ✓", color: "text-emerald-400" },
-                      { label: "Compliance rules audit", detail: "State Farm category 3 SLA rules", status: "Zero errors ✓", color: "text-emerald-400" },
-                      { label: "Insurance requirements", detail: "Dehumidifier runtime cap check", status: "Auto-corrected ✓", color: "text-purple-400" }
-                    ].map((rule, idx) => (
-                      <div key={idx} className="bg-white/[0.01] border border-white/5 rounded-lg p-2 flex items-center justify-between">
-                        <div>
-                          <div className="text-[9px] font-bold text-white">{rule.label}</div>
-                          <div className="text-[7.5px] text-gray-500 font-mono mt-0.5">{rule.detail}</div>
-                        </div>
-                        <span className={`text-[8.5px] font-bold ${rule.color} font-mono shrink-0`}>{rule.status}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="text-[8px] font-mono text-emerald-400 bg-emerald-400/5 border border-emerald-400/10 p-1.5 rounded text-center font-bold uppercase select-none">
-                    ✓ Claim ready for carrier submission (100% compliant)
-                  </div>
-                </div>
+              {/* Compliance Checker Board / Infographic Image */}
+              <GlowCardInner className="w-[95%] h-[95%]">
+                <img 
+                  src="/insurance_compliance_workflow.jpg" 
+                  alt="Insurance Compliance Problems Diagram" 
+                  className="w-full h-full object-cover sm:object-contain transition-transform duration-700 hover:scale-[1.01]"
+                />
               </GlowCardInner>
             </div>
             
@@ -359,45 +208,13 @@ export const FeaturesGrid = () => {
               {/* Premium Laser Sweep shine effect */}
               <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-30" />
 
-              {/* Centralized knowledge brain directory split panel */}
-              <GlowCardInner className="w-[95%] h-[95%] flex-row text-left">
-                
-                {/* Left File Tree Sidebar */}
-                <div className="w-[45%] bg-[#0b0b0f] border-r border-white/5 p-3 flex flex-col gap-3 text-gray-500 font-mono text-[7px] shrink-0">
-                  <div className="text-[8px] font-bold text-gray-400 flex items-center gap-1 uppercase">
-                    <Folder className="w-3 h-3 text-purple-400" /> Company Brain
-                  </div>
-                  
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-1 text-gray-300 font-medium cursor-pointer pl-1"><ChevronRight className="w-2.5 h-2.5 text-purple-400" /> SOPs</div>
-                    <div className="flex items-center gap-1 text-gray-300 font-medium cursor-pointer pl-1"><ChevronRight className="w-2.5 h-2.5 text-purple-400" /> Contracts</div>
-                    <div className="flex items-center gap-1 text-gray-300 font-medium cursor-pointer pl-1"><ChevronRight className="w-2.5 h-2.5 text-purple-400" /> Legal Templates</div>
-                    <div className="flex items-center gap-1 text-gray-300 font-medium cursor-pointer pl-1"><ChevronRight className="w-2.5 h-2.5 text-purple-400" /> Project Files</div>
-                  </div>
-                </div>
-
-                {/* Right Document Editor Viewer */}
-                <div className="flex-1 p-3 flex flex-col justify-between bg-black/40">
-                  <div className="space-y-2">
-                    <div className="relative">
-                      <Search className="w-3 h-3 text-gray-500 absolute left-2 top-1/2 -translate-y-1/2" />
-                      <input 
-                        disabled
-                        type="text" 
-                        placeholder="Search company knowledge..."
-                        className="w-full bg-black/40 border border-white/5 rounded px-7 py-1 text-[8px] font-sans text-gray-400 placeholder-gray-600 outline-none"
-                      />
-                    </div>
-                    
-                    <div className="text-[7.5px] text-gray-400 font-sans leading-relaxed space-y-1">
-                      <div className="font-bold text-white">SOP-Restoration-03</div>
-                      <p>Drying procedures: Setup dehumidifiers for exactly 3 days. Log relative humidity daily in moisture sheets.</p>
-                    </div>
-                  </div>
-                  
-                  <span className="text-[7px] text-purple-400 font-mono font-bold select-none">AI semantic search active</span>
-                </div>
-
+              {/* Centralized knowledge brain directory split panel / Infographic Image */}
+              <GlowCardInner className="w-[95%] h-[95%]">
+                <img 
+                  src="/scattered_documents_workflow.jpg" 
+                  alt="Scattered Documents Diagram" 
+                  className="w-full h-full object-cover sm:object-contain transition-transform duration-700 hover:scale-[1.01]"
+                />
               </GlowCardInner>
 
             </div>
@@ -424,43 +241,14 @@ export const FeaturesGrid = () => {
               {/* Premium Laser Sweep shine effect */}
               <div className="absolute top-0 bottom-0 left-[-150%] w-[80%] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent skew-x-[25deg] group-hover:left-[250%] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-30" />
 
-              {/* Floating Voice to Action audio preview */}
-              <div className="w-[95%] h-[95%] flex flex-col gap-3 justify-center relative z-10 select-none">
-                
-                <GlowCardInner className="p-3.5 flex flex-col gap-3 text-left" radialRadius={160} radialOpacity={0.08}>
-                  {/* Wave audio intake */}
-                  <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                    <span className="text-[8.5px] font-bold font-mono text-gray-400 flex items-center gap-1.5 uppercase">
-                      <Volume2 className="w-3.5 h-3.5 text-purple-400" /> VOICE TO ACTION CONVERSION
-                    </span>
-                    <span className="text-[7.5px] text-[#FF3B00] font-mono font-bold animate-pulse">RECORDING</span>
-                  </div>
-
-                  {/* Pulsing visualizer wave */}
-                  <div className="flex items-center justify-center gap-1 h-5 w-full py-1">
-                    {[1.2, 3.5, 2.0, 4.2, 1.8, 3.0, 1.0, 3.8, 2.2, 3.5, 1.5].map((h, i) => (
-                      <span 
-                        key={i} 
-                        className="w-[2px] bg-gradient-to-t from-purple-500 to-indigo-400 rounded-full transition-all duration-300"
-                        style={{ 
-                          height: pulse ? `${h * 4.5}px` : `${h * 1.5}px`
-                        }} 
-                      />
-                    ))}
-                  </div>
-
-                  {/* Action items extracted */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="text-[8.5px] font-bold text-white">Action items extracted automatically:</div>
-                    <div className="space-y-1 text-[7.5px] text-gray-400 font-mono">
-                      <div className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-emerald-400 shrink-0" /> Tech Lead: Setup 4 dehumidifiers in basement</div>
-                      <div className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-emerald-400 shrink-0" /> Crew: Deliver 30 sheets drywall by Monday</div>
-                      <div className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-emerald-400 shrink-0" /> Admin: Send signed estimate to State Farm</div>
-                    </div>
-                  </div>
-                </GlowCardInner>
-
-              </div>
+              {/* Floating Voice to Action audio preview / Infographic Image */}
+              <GlowCardInner className="w-[95%] h-[95%]">
+                <img 
+                  src="/lost_meeting_information_workflow.jpg" 
+                  alt="Meetings Information Lost Diagram" 
+                  className="w-full h-full object-cover sm:object-contain transition-transform duration-700 hover:scale-[1.01]"
+                />
+              </GlowCardInner>
 
             </div>
             

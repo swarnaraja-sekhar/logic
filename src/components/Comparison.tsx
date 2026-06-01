@@ -208,12 +208,12 @@ const Comparison = () => {
           transition={{ duration: 0.6 }}
           className="bg-white/[0.02] border border-white/5 rounded-2xl p-6"
         >
-          <div className="text-xs text-gray-500 uppercase tracking-wider mb-6 text-center lg:text-left">THE COST OF <span className="text-gray-400">DOING THINGS</span> <span className="text-red-500">THE OLD WAY</span></div>
+          <div className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-wider mb-6 text-center lg:text-left">THE COST OF <span className="text-gray-300">DOING THINGS</span> <span className="text-red-500">THE OLD WAY</span></div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="text-center lg:text-left"><div className="text-xl font-bold flex items-center justify-center lg:justify-start gap-1"><Clock className="w-4 h-4 text-red-500" /> 1,240+</div><div className="text-[10px] text-gray-500 mt-1">Hours Wasted<br />Every Month</div></div>
-            <div className="text-center lg:text-left"><div className="text-xl font-bold flex items-center justify-center lg:justify-start gap-1"><DollarSign className="w-4 h-4 text-red-500" /> $847K+</div><div className="text-[10px] text-gray-500 mt-1">Lost Revenue<br />Every Month</div></div>
-            <div className="text-center lg:text-left"><div className="text-xl font-bold flex items-center justify-center lg:justify-start gap-1"><Users className="w-4 h-4 text-red-500" /> 12+</div><div className="text-[10px] text-gray-500 mt-1">Competitors Ahead<br />Every Quarter</div></div>
-            <div className="text-center lg:text-left"><div className="text-xl font-bold flex items-center justify-center lg:justify-start gap-1"><TrendingUp className="w-4 h-4 text-red-500 rotate-180" /> 37%</div><div className="text-[10px] text-gray-500 mt-1">Projects Fail<br />Before Launch</div></div>
+            <div className="text-center lg:text-left"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-start gap-1"><Clock className="w-5 h-5 text-red-500" /> 1,240+</div><div className="text-[11px] sm:text-xs font-semibold text-gray-400 mt-2 leading-normal">Hours Wasted<br />Every Month</div></div>
+            <div className="text-center lg:text-left"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-start gap-1"><DollarSign className="w-5 h-5 text-red-500" /> $847K+</div><div className="text-[11px] sm:text-xs font-semibold text-gray-400 mt-2 leading-normal">Lost Revenue<br />Every Month</div></div>
+            <div className="text-center lg:text-left"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-start gap-1"><Users className="w-5 h-5 text-red-500" /> 12+</div><div className="text-[11px] sm:text-xs font-semibold text-gray-400 mt-2 leading-normal">Competitors Ahead<br />Every Quarter</div></div>
+            <div className="text-center lg:text-left"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-start gap-1"><TrendingUp className="w-5 h-5 text-red-500 rotate-180" /> 37%</div><div className="text-[11px] sm:text-xs font-semibold text-gray-400 mt-2 leading-normal">Projects Fail<br />Before Launch</div></div>
           </div>
         </motion.div>
 
@@ -225,12 +225,12 @@ const Comparison = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-emerald-500/[0.03] border border-emerald-500/20 rounded-2xl p-6"
         >
-          <div className="text-xs text-white uppercase tracking-wider mb-6 text-center lg:text-right">THE RESULTS WITH <span className="text-emerald-400">BIGLOGICAI</span></div>
+          <div className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-6 text-center lg:text-right">THE RESULTS WITH <span className="text-emerald-400">BIGLOGICAI</span></div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="text-center lg:text-right"><div className="text-xl font-bold text-white flex items-center justify-center lg:justify-end gap-1"><Zap className="w-4 h-4 text-emerald-400" /> 10X</div><div className="text-[10px] text-gray-400 mt-1">Faster<br />Execution</div></div>
-            <div className="text-center lg:text-right"><div className="text-xl font-bold text-white flex items-center justify-center lg:justify-end gap-1"><TrendingUp className="w-4 h-4 text-emerald-400" /> 90%</div><div className="text-[10px] text-gray-400 mt-1">Time<br />Saved</div></div>
-            <div className="text-center lg:text-right"><div className="text-xl font-bold text-white flex items-center justify-center lg:justify-end gap-1"><DollarSign className="w-4 h-4 text-emerald-400" /> 70%</div><div className="text-[10px] text-gray-400 mt-1">Lower<br />Costs</div></div>
-            <div className="text-center lg:text-right"><div className="text-xl font-bold text-white flex items-center justify-center lg:justify-end gap-1"><Rocket className="w-4 h-4 text-emerald-400" /> 100%</div><div className="text-[10px] text-gray-400 mt-1">Focus On<br />Growth</div></div>
+            <div className="text-center lg:text-right"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-end gap-1"><Zap className="w-5 h-5 text-emerald-400 animate-pulse" /> 10X</div><div className="text-[11px] sm:text-xs font-semibold text-gray-300 mt-2 leading-normal">Faster<br />Execution</div></div>
+            <div className="text-center lg:text-right"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-end gap-1"><TrendingUp className="w-5 h-5 text-emerald-400" /> 90%</div><div className="text-[11px] sm:text-xs font-semibold text-gray-300 mt-2 leading-normal">Time<br />Saved</div></div>
+            <div className="text-center lg:text-right"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-end gap-1"><DollarSign className="w-5 h-5 text-emerald-400" /> 70%</div><div className="text-[11px] sm:text-xs font-semibold text-gray-300 mt-2 leading-normal">Lower<br />Costs</div></div>
+            <div className="text-center lg:text-right"><div className="text-2xl font-black text-white flex items-center justify-center lg:justify-end gap-1"><Rocket className="w-5 h-5 text-emerald-400" /> 100%</div><div className="text-[11px] sm:text-xs font-semibold text-gray-300 mt-2 leading-normal">Focus On<br />Growth</div></div>
           </div>
         </motion.div>
       </div>
@@ -243,16 +243,16 @@ const Comparison = () => {
         transition={{ duration: 0.8 }}
         className="mt-4 bg-white/[0.02] border border-white/5 rounded-2xl p-8 relative overflow-hidden"
       >
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-black border border-[#FF3B00]/50 text-[#FF3B00] font-black text-xs italic shadow-[0_0_15px_rgba(255,59,0,0.3)]">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center w-11 h-11 rounded-full bg-black border border-[#FF3B00] text-[#FF3B00] font-black text-sm italic shadow-[0_0_20px_rgba(255,59,0,0.45)]">
           VS
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8">
           {/* Left Timeline */}
           <div>
-            <div className="text-center lg:text-left text-xs text-gray-500 uppercase tracking-widest mb-8">THE OLD WAY (6+ MONTHS)</div>
-            <div className="relative flex items-center justify-between text-gray-500 px-0 sm:px-4">
-              <div className="absolute left-6 right-6 top-4 h-[1px] bg-white/10 hidden sm:block"></div>
+            <div className="text-center lg:text-left text-sm font-extrabold text-gray-400 uppercase tracking-widest mb-10">THE OLD WAY (6+ MONTHS)</div>
+            <div className="relative flex items-center justify-between text-gray-400 px-0 sm:px-4">
+              <div className="absolute left-6 right-6 top-4.5 h-[1px] bg-white/10 hidden sm:block"></div>
               {[
                 { i: Lightbulb, t: "Idea" },
                 { i: Users, t: "Meetings" },
@@ -269,35 +269,35 @@ const Comparison = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="flex flex-col items-center gap-2 relative z-10"
+                  className="flex flex-col items-center gap-2.5 relative z-10"
                 >
-                  <div className="w-8 h-8 rounded-full border border-white/10 bg-[#0a0a0a] flex items-center justify-center"><item.i className="w-3 h-3" /></div>
-                  <span className="text-[10px] hidden sm:block">{item.t}</span>
+                  <div className="w-9 h-9 rounded-full border border-white/15 bg-[#0a0a0a] flex items-center justify-center transition-all duration-350 hover:border-red-500/40 hover:scale-105 shadow-md"><item.i className="w-4 h-4 text-gray-400" /></div>
+                  <span className="text-[11px] sm:text-xs font-semibold text-gray-400 mt-1 hidden sm:block">{item.t}</span>
                 </motion.div>
               ))}
             </div>
-            <div className="mt-6 flex items-center justify-between">
-              <div className="text-[#FF3B00] text-xs font-bold uppercase tracking-wider">SLOW. EXPENSIVE. UNPREDICTABLE.</div>
-              <div className="text-gray-500 text-xs">6+ Months</div>
+            <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-4">
+              <div className="text-[#FF3B00] text-xs sm:text-sm font-black uppercase tracking-wider">SLOW. EXPENSIVE. UNPREDICTABLE.</div>
+              <div className="text-gray-400 text-xs sm:text-sm font-bold">6+ Months</div>
             </div>
           </div>
 
           {/* Right Timeline */}
           <div>
-            <div className="text-center lg:text-right text-emerald-400 text-xs uppercase tracking-widest mb-8">THE BIGLOGICAI WAY (48 HOURS)</div>
+            <div className="text-center lg:text-right text-emerald-400 text-sm font-extrabold uppercase tracking-widest mb-10">THE BIGLOGICAI WAY (48 HOURS)</div>
             <div className="relative flex items-center justify-between px-0 sm:px-4">
-              <div className="absolute left-6 right-6 top-4 h-[1px] bg-gradient-to-r from-emerald-500 to-green-500 hidden sm:block"></div>
-              <div className="absolute left-6 right-6 top-4 h-[1px] bg-gradient-to-r from-emerald-500 to-green-500 hidden sm:block opacity-50 blur-sm"></div>
+              <div className="absolute left-6 right-6 top-4.5 h-[1px] bg-gradient-to-r from-emerald-500 to-green-500 hidden sm:block"></div>
+              <div className="absolute left-6 right-6 top-4.5 h-[1px] bg-gradient-to-r from-emerald-500 to-green-500 hidden sm:block opacity-50 blur-sm"></div>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.2 }}
-                className="flex flex-col items-center gap-2 relative z-10"
+                className="flex flex-col items-center gap-2.5 relative z-10"
               >
-                <div className="w-8 h-8 rounded-full border border-white/20 bg-[#0a0a0a] flex items-center justify-center"><Lightbulb className="w-3 h-3 text-white" /></div>
-                <span className="text-[10px] text-gray-400 hidden sm:block">Idea</span>
+                <div className="w-9 h-9 rounded-full border border-white/20 bg-[#0a0a0a] flex items-center justify-center"><Lightbulb className="w-4 h-4 text-white" /></div>
+                <span className="text-[11px] sm:text-xs font-semibold text-gray-300 mt-1 hidden sm:block">Idea</span>
               </motion.div>
 
               <motion.div
@@ -305,15 +305,15 @@ const Comparison = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.4 }}
-                className="flex flex-col items-center relative z-10 bg-[#0a0a0a] px-4"
+                className="flex flex-col items-center relative z-10 bg-[#0a0a0a] px-5"
               >
-                <div className="flex items-center gap-2 text-white font-bold text-xl">
-                  <div className="w-6 h-6 bg-emerald-500 rounded flex items-center justify-center text-xs shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+                <div className="flex items-center gap-2.5 text-white font-black text-xl sm:text-2xl">
+                  <div className="w-7 h-7 bg-emerald-500 rounded flex items-center justify-center text-xs shadow-[0_0_12px_rgba(16,185,129,0.55)]">
                     <span className="transform -skew-x-[15deg]">B</span>
                   </div>
                   <span>BigLogic<span className="font-normal text-gray-400">Ai</span></span>
                 </div>
-                <div className="text-[10px] text-gray-400 mt-2 hidden sm:block">AI Automates. You Scale.</div>
+                <div className="text-[11px] sm:text-xs font-semibold text-emerald-400 mt-2 hidden sm:block">AI Automates. You Scale.</div>
               </motion.div>
 
               <motion.div
@@ -321,15 +321,15 @@ const Comparison = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-col items-center gap-2 relative z-10"
+                className="flex flex-col items-center gap-2.5 relative z-10"
               >
-                <div className="w-8 h-8 rounded-full border border-green-500/50 bg-[#0a0a0a] flex items-center justify-center"><Rocket className="w-3 h-3 text-green-500" /></div>
-                <span className="text-[10px] text-white hidden sm:block">Launch</span>
+                <div className="w-9 h-9 rounded-full border border-green-500/50 bg-[#0a0a0a] flex items-center justify-center"><Rocket className="w-4 h-4 text-green-400" /></div>
+                <span className="text-[11px] sm:text-xs font-semibold text-white mt-1 hidden sm:block">Launch</span>
               </motion.div>
             </div>
-            <div className="mt-6 flex items-center justify-between">
-              <div className="text-green-500 text-xs font-bold uppercase tracking-wider">FAST. SMART. UNSTOPPABLE.</div>
-              <div className="text-gray-400 text-xs">48 Hours</div>
+            <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-4">
+              <div className="text-green-400 text-xs sm:text-sm font-black uppercase tracking-wider">FAST. SMART. UNSTOPPABLE.</div>
+              <div className="text-gray-200 text-xs sm:text-sm font-bold">48 Hours</div>
             </div>
           </div>
         </div>

@@ -249,34 +249,34 @@ export const OnePlatform = () => {
                   </div>
                   
                   {/* Centered, bold uppercase title */}
-                  <h3 className="text-sm font-bold text-white tracking-wider uppercase leading-none">
+                  <h3 className="text-base sm:text-lg font-extrabold text-white tracking-wider uppercase leading-none">
                     {module.title}
                   </h3>
 
                   {/* Centered description text */}
-                  <p className="text-gray-400 text-[11px] leading-relaxed max-w-[260px] font-sans">
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-[280px] font-sans">
                     {module.description}
                   </p>
                 </div>
 
                 {/* Features list bullet layout */}
-                <div className="space-y-2.5 pt-4.5 mt-5 border-t border-white/5 w-full">
+                <div className="space-y-3 pt-4.5 mt-5 border-t border-white/5 w-full">
                   {module.features.map((feat, idx) => {
                     const isAiAutomation = module.id === "ai-automation";
                     return (
-                      <div key={idx} className="flex items-center gap-2.5 text-[11px] text-gray-300">
+                      <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
                         {isAiAutomation ? (
                           /* Custom checkmark for AI Automation card */
-                          <div className="w-3.5 h-3.5 rounded-full bg-[#FF3B00]/10 border border-[#FF3B00]/40 flex items-center justify-center text-[#FF3B00] shrink-0 shadow-[0_0_6px_rgba(255,59,0,0.1)]">
+                          <div className="w-4 h-4 rounded-full bg-[#FF3B00]/10 border border-[#FF3B00]/40 flex items-center justify-center text-[#FF3B00] shrink-0 shadow-[0_0_6px_rgba(255,59,0,0.1)]">
                             <svg className="w-2 h-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
                           </div>
                         ) : (
                           /* Solid glowing orange dot for other cards */
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#FF3B00] shrink-0 shadow-[0_0_6px_#FF3B00]" />
+                          <div className="w-2 h-2 rounded-full bg-[#FF3B00] shrink-0 shadow-[0_0_6px_#FF3B00]" />
                         )}
-                        <span className="font-medium tracking-wide">{feat}</span>
+                        <span className="font-semibold tracking-wide">{feat}</span>
                       </div>
                     );
                   })}
@@ -290,26 +290,26 @@ export const OnePlatform = () => {
             initial={{ scale: 0.96, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            className="lg:col-start-2 lg:row-start-2 flex items-center justify-center relative w-full h-full min-h-[260px] z-20 py-8 lg:py-0"
+            className="lg:col-start-2 lg:row-start-2 flex items-center justify-center relative w-full h-full min-h-[300px] z-20 py-8 lg:py-0"
           >
             {/* Double outer pulse ring */}
-            <div className="absolute w-[240px] h-[240px] rounded-full border border-[#FF3B00]/20 animate-ping opacity-30 blur-[1px] pointer-events-none" />
-            <div className="absolute w-[260px] h-[260px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.08)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute w-[280px] h-[280px] rounded-full border border-[#FF3B00]/20 animate-ping opacity-30 blur-[1px] pointer-events-none" />
+            <div className="absolute w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,59,0,0.08)_0%,transparent_70%)] pointer-events-none" />
 
-            <div className="w-[210px] h-[210px] rounded-full border border-[#FF3B00]/30 bg-black flex flex-col items-center justify-center p-5 shadow-[0_20px_50px_rgba(31,18,72,0.25)] border-t-[#FF3B00]/70 relative select-none">
+            <div className="w-[250px] h-[250px] rounded-full border border-[#FF3B00]/30 bg-black flex flex-col items-center justify-center p-6 shadow-[0_20px_50px_rgba(31,18,72,0.25)] border-t-[#FF3B00]/70 relative select-none">
               
               {/* Premium custom modern B logo */}
-              <svg className="w-13 h-13 text-[#FF3B00] filter drop-shadow-[0_0_8px_rgba(255,59,0,0.7)] mb-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-16 h-16 text-[#FF3B00] filter drop-shadow-[0_0_8px_rgba(255,59,0,0.7)] mb-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M32 24H58C67 24 73 29 73 37C73 44 67 48 58 48H32" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M32 48H62C71 48 77 53 77 62C77 71 71 76 62 76H32" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M32 20V80" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
               </svg>
 
-              <h2 className="text-sm font-black uppercase text-white tracking-[0.2em] leading-none">
+              <h2 className="text-base font-black uppercase text-white tracking-[0.2em] leading-none">
                 BIGLOGIC<span className="text-[#FF3B00]">AI</span>
               </h2>
 
-              <p className="text-[7.5px] font-mono font-bold tracking-widest text-gray-500 uppercase mt-3.5 text-center leading-normal max-w-[140px]">
+              <p className="text-[10px] font-mono font-bold tracking-widest text-gray-400 uppercase mt-4 text-center leading-normal max-w-[170px]">
                 The Operating System for Reconstruction
               </p>
             </div>
@@ -326,12 +326,12 @@ export const OnePlatform = () => {
                 key={idx}
                 className="bg-[#08080c]/45 border border-white/10 rounded-2xl p-5 text-left flex items-start gap-4 hover:border-white/20 transition-colors duration-300 shadow-[0_12px_35px_rgba(0,0,0,0.2)] backdrop-blur-2xl"
               >
-                <div className="w-9 h-9 rounded-xl bg-[#FF3B00]/10 border border-[#FF3B00]/25 flex items-center justify-center text-[#FF3B00] shrink-0 shadow-[0_2px_8px_rgba(255,59,0,0.15)]">
-                  <HlIcon className="w-4.5 h-4.5" />
+                <div className="w-10 h-10 rounded-xl bg-[#FF3B00]/10 border border-[#FF3B00]/25 flex items-center justify-center text-[#FF3B00] shrink-0 shadow-[0_2px_8px_rgba(255,59,0,0.15)]">
+                  <HlIcon className="w-5 h-5" />
                 </div>
-                <div className="space-y-1.5">
-                  <div className="text-[11px] font-bold text-white uppercase tracking-wider">{hl.title}</div>
-                  <p className="text-[10.5px] text-gray-400 leading-relaxed font-sans">{hl.description}</p>
+                <div className="space-y-2">
+                  <div className="text-xs sm:text-sm font-extrabold text-white uppercase tracking-wider">{hl.title}</div>
+                  <p className="text-xs text-gray-400 leading-relaxed font-sans">{hl.description}</p>
                 </div>
               </div>
             );
